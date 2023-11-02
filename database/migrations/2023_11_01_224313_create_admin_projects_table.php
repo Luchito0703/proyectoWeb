@@ -15,6 +15,10 @@ class CreateAdminProjectsTable extends Migration
     {
         Schema::create('admin_projects', function (Blueprint $table) {
             $table->id();
+            $table->string('name')->comment('Nombre del administrador del proyecto');
+            $table->integer('number_phone')->comment('Numero de telefono del administrador del proyecto');
+            $table->string('address')->comment('Direccion del administrador del proyecto');
+            $table->string('email')->comment('Email del administrador del proyecto');
             $table->timestamps();
         });
     }
