@@ -15,6 +15,14 @@ class CreateCertificatesTable extends Migration
     {
         Schema::create('certificates', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger("id_contra")->comment("ID del contratista");
+            $table->foreign("id_contra")->references("id")->on("contractors");
+            $table->unsignedBigInteger("nit_customer")->comment("Nit de la empresa usuario");
+            $table->foreign("nit_customer")->references("id")->on("customers");
+            $table->unsignedBigInteger("id_contract")->comment("Identificador del contrato");
+            $table->foreign("id_contract")->references("id")->on("contracts");
+            $table->date("date_expedition")->comment("Fecha de expedicion del certificado");
+            $table->string("issue")->comment("Tema principal del proyecto");
             $table->timestamps();
         });
     }
