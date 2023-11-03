@@ -13,13 +13,13 @@ class AdminProjectsController extends Controller
      */
     public function index()
     {
-        $adminProjects = adminProjects::all();
+        $adminProjects = adminProject::all();
         // return view(index);
     }
 
     public function store(Request $request)
     {
-        $adminProject = new adminProjects();
+        $adminProject = new adminProject();
         $adminProject->id = $request->idProject;
         $adminProject->name = $request->nameProject;
         $adminProject->phone = $request->phoneProject;
@@ -36,13 +36,13 @@ class AdminProjectsController extends Controller
 
     public function edit($id)
     {
-        $adminProject = adminProjects::find($id);
+        $adminProject = adminProject::find($id);
         // return view('x.editar',compact('adminBoss'));
     }
 
     public function update(Request $request, $id)
     {
-        $adminProject = adminProjects::find($id);
+        $adminProject = adminProject::find($id);
         $adminProject->id = $request->idProject;
         $adminProject->name = $request->nameProject;
         $adminProject->phone = $request->phoneProject;
@@ -54,7 +54,7 @@ class AdminProjectsController extends Controller
 
     public function destroy($id)
     {
-        $adminProject = admiProjects::find($id);
+        $adminProject = admiProject::find($id);
         $adminProject->delete();
         // return redirect()->route('x.index');
     }

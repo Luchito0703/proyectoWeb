@@ -3,82 +3,59 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\certificate;
 
 class CertificatesController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
-        //
+        $certificates = certificates::all();
+        // return view('index',compact('certificates'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $certificate = new certificate();
+        $certificate->id = $request->$idCertificate;
+        $certificate->id_contra = $request->$idContractor;
+        $certificate->nit_costumer = $request->$nit_costumer;
+        $certificate->id_contract = $request->$idcontract;
+        $certificate->date_expedition = $request->$dateExpedition;
+        $certificate->issue = $request->$issueCertificate;
+        $certificate->save();
+        // return redirect()->route('x.index');
+
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
-        //
+        $certificate = certificate::find($id);
+        // return view('x.edit_certificate',compact('certificate'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
-        //
+        $certificate = certificate::find($id);
+        $certificate->id = $request->$idCertificate;
+        $certificate->id_contra = $request->$idContractor;
+        $certificate->nit_costumer = $request->$nit_costumer;
+        $certificate->id_contract = $request->$idcontract;
+        $certificate->date_expedition = $request->$dateExpedition;
+        $certificate->issue = $request->$issueCertificate;
+        $certificate->save();
+        // return redirect()->route('x.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
-        //
+        $certificate = certificate::find($id);
+        $certificate->delete();
+        // return redirect()->route('x.index');
     }
 }
