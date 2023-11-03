@@ -23,18 +23,18 @@ class AdminBossController extends Controller
         $adminBoss->phone = $request->phoneBoss;
         $adminBoss->address = $request->addressBoss;
         $adminBoss->email = $request->emailBoss;
-        if ($adminBoss->save()) {
-            return response()->json([
-                "status"=>"succes",
-                "message"=>"Author created succesfully"
-            ]);
-        } else{
-            return response()->json([
-                "status"=>"Error",
-                "message"=>"Author  not created"
-            ]);
-        }
-        // $adminBoss->save();
+        // if ($adminBoss->save()) {
+        //     return response()->json([
+        //         "status"=>"succes",
+        //         "message"=>"Author created succesfully"
+        //     ]);
+        // } else{
+        //     return response()->json([
+        //         "status"=>"Error",
+        //         "message"=>"Author  not created"
+        //     ]);
+        // }
+        $adminBoss->save();
         // return redirect()->route('x.index');
 
     }
@@ -65,18 +65,18 @@ class AdminBossController extends Controller
     public function destroy($id)
     {
         $adminBoss = adminBoss::find($id);
-        if ($adminBoss->delete()) {
-            return response()->json([
-                "status"=>"succes",
-                "message"=>"Author created succesfully"
-            ]);
-        } else{
-            return response()->json([
-                "status"=>"Error",
-                "message"=>"Author  not created"
-            ]);
-        }
-        // $adminBoss->delete();
+        // if ($adminBoss->delete()) {
+        //     return response()->json([
+        //         "status"=>"succes",
+        //         "message"=>"Author created succesfully"
+        //     ]);
+        // } else{
+        //     return response()->json([
+        //         "status"=>"Error",
+        //         "message"=>"Author  not created"
+        //     ]);
+        // }
+        $adminBoss->delete();
         // return redirect()->route('x.index');
     }
 }
