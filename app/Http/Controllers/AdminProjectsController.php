@@ -13,72 +13,49 @@ class AdminProjectsController extends Controller
      */
     public function index()
     {
-        //
+        $adminProjects = adminProjects::all();
+        // return view(index);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $adminProject = new adminProjects();
+        $adminProject->id = $request->idProject;
+        $adminProject->name = $request->nameProject;
+        $adminProject->phone = $request->phoneProject;
+        $adminProject->address = $request->addressProject;
+        $adminProject->email = $request->emailProject;
+        $adminProject->save();
+        // return redirect()->route('x.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
-        //
+        $adminProject = adminProjects::find($id);
+        // return view('x.editar',compact('adminBoss'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
-        //
+        $adminProject = adminProjects::find($id);
+        $adminProject->id = $request->idProject;
+        $adminProject->name = $request->nameProject;
+        $adminProject->phone = $request->phoneProject;
+        $adminProject->address = $request->addressProject;
+        $adminProject->email = $request->emailProject;
+        $adminProject->save();
+        // return redirect()->route('x.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
-        //
+        $adminProject = admiProjects::find($id);
+        $adminProject->delete();
+        // return redirect()->route('x.index');
     }
 }

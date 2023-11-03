@@ -11,7 +11,7 @@ class AdminBossController extends Controller
     public function index()
     {
         $adminBosses = adminBoss::all();
-        return response()->json($adminBosses);
+        // return response()->json($adminBosses);
         // return view(index);
     }
 
@@ -23,6 +23,7 @@ class AdminBossController extends Controller
         $adminBoss->phone = $request->phoneBoss;
         $adminBoss->address = $request->addressBoss;
         $adminBoss->email = $request->emailBoss;
+        $adminBoss->save();
         // if ($adminBoss->save()) {
         //     return response()->json([
         //         "status"=>"succes",
@@ -34,7 +35,6 @@ class AdminBossController extends Controller
         //         "message"=>"Author  not created"
         //     ]);
         // }
-        $adminBoss->save();
         // return redirect()->route('x.index');
 
     }
