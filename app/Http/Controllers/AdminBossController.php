@@ -3,82 +3,80 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\adminBoss;
 
 class AdminBossController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
-        //
+        $adminBosses = adminBoss::all();
+        return response()->json($adminBosses);
+        // return view(index);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $adminBoss = new adminBoss();
+        $adminBoss->id = $request->idBoss;
+        $adminBoss->name = $request->nameBoss;
+        $adminBoss->phone = $request->phoneBoss;
+        $adminBoss->address = $request->addressBoss;
+        $adminBoss->email = $request->emailBoss;
+        if ($adminBoss->save()) {
+            return response()->json([
+                "status"=>"succes",
+                "message"=>"Author created succesfully"
+            ]);
+        } else{
+            return response()->json([
+                "status"=>"Error",
+                "message"=>"Author  not created"
+            ]);
+        }
+        // $adminBoss->save();
+        // return redirect()->route('x.index');
+
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
-        //
+        
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
-        //
+        $adminBoss = adminBoss::find();
+        // return view('x.editar',compact('adminBoss'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
-        //
+        $adminBoss = adminBoss::find($id);
+        $adminBoss->id = $request->idBoss;
+        $adminBoss->name = $request->nameBoss;
+        $adminBoss->phone = $request->phoneBoss;
+        $adminBoss->address = $request->addressBoss;
+        $adminBoss->email = $request->emailBoss;
+        $adminBoss->save();
+        // return redirect()->route('x.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
-        //
+        $adminBoss = adminBoss::find($id);
+        if ($adminBoss->delete()) {
+            return response()->json([
+                "status"=>"succes",
+                "message"=>"Author created succesfully"
+            ]);
+        } else{
+            return response()->json([
+                "status"=>"Error",
+                "message"=>"Author  not created"
+            ]);
+        }
+        // $adminBoss->delete();
+        // return redirect()->route('x.index');
     }
 }
