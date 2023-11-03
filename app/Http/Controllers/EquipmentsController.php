@@ -10,7 +10,7 @@ class EquipmentsController extends Controller
     
     public function index()
     {
-        $equipment = equipment::all();
+        $equipments = equipments::all();
         // return('x.index');
     }
 

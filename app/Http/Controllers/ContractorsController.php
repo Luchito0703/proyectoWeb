@@ -37,7 +37,7 @@ class ContractorsController extends Controller
 
     public function edit($id)
     {
-        $contractor = contractor::find($id);
+        $contractors = contractors::find($id);
         // return view('x.edit_contractor',compact('contractor'));
     }
 
