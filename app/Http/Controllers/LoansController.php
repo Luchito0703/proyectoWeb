@@ -3,82 +3,60 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\loan;
 
 class LoansController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function index()
     {
-        //
+        $loan = loan::all();
+        // return view('x.index');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+   
     public function store(Request $request)
     {
-        //
+        $loan = new loan();
+        $loan-> id = $request->idPrest;
+        $loan-> id_contra = $request->idContractor;
+        $loan-> id_team = $request->idTeam;
+        $loan-> date_dev = $request->dateDevolution;
+        $loan-> date_prest = $request->DateLoan;
+        $loan->save();
+        // return redirect()->route('x.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
-        //
+        $loan = loan::find($id);
+        // return view('x.edit_loan',compact('loan'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+   
     public function update(Request $request, $id)
     {
-        //
+        $loan = loan::find($id);
+        $loan-> id = $request->idPrest;
+        $loan-> id_contra = $request->idContractor;
+        $loan-> id_team = $request->idTeam;
+        $loan-> date_dev = $request->dateDevolution;
+        $loan-> date_prest = $request->DateLoan;
+        $loan->save();
+        // return redirect()->route('x.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+   
     public function destroy($id)
     {
-        //
+        $loan = loan::find($id);
+        $loan->delete();
+        // return redirect()->route('x.index');
     }
 }
