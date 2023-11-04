@@ -3,82 +3,63 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\contractor;
 
 class ContractorsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
-        //
+        $contractor = contractor::all();
+        // return view('index');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+  
+    
     public function store(Request $request)
     {
-        //
+        $contractor = new contractor();
+        $contractor->id_contra = $request->id_contra;
+        $contractor-> name = $request->nameContractor;
+        $contractor-> number_phone = $request->number_phone;
+        $contractor-> address = $request->address;
+        $contractor-> dni = $request->dni;
+        $contractor-> email = $request->email;
+        $contractor->save();
+        // return redirect()->route('x.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
-        //
+        $contractors = contractors::find($id);
+        // return view('x.edit_contractor',compact('contractor'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+  
     public function update(Request $request, $id)
     {
-        //
+        $contractor = contractor::find($id);
+        $contractor-> id = $request->idContractor;
+        $contractor-> name = $request->nameContractor;
+        $contractor-> number_phone = $request->numberPhone_Contractor;
+        $contractor-> address = $request->addressContractor;
+        $contractor-> dni = $request->dniContractor;
+        $contractor-> email = $request->emailContractor;
+        $contractor->save();
+        // return redirect()->route('x.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function destroy($id)
     {
-        //
+        $contractor = contractor::find($id);
+        $contractor->delete();
+        // return redirect->route('x.index');
     }
 }

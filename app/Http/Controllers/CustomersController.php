@@ -10,7 +10,8 @@ class CustomersController extends Controller
 
     public function index()
     {
-        // $customers=Customer::all();
+        $customers=Customer::all();
+        // return view(index);
         
     }
 
@@ -23,7 +24,7 @@ class CustomersController extends Controller
     public function store(Request $request)
     {
         $customer=new Customer();
-        $customer->id=$request->idCustomer;
+        $customer->dni=$request->dni;
         $customer->name=$request->nameCustomer;
         $customer->number_phone=$request->numberCustomer;
         $customer->address=$request->addressCustomer;
@@ -47,11 +48,11 @@ class CustomersController extends Controller
     public function update(Request $request, $id)
     {
         $customer=Customer::find($id);
-        $customer->id=$request->idCustomer;
-        $customer->name=$request->nameCustomer;
-        $customer->number_phone=$request->numberCustomer;
-        $customer->address=$request->addressCustomer;
-        $customer->email=$request->emailCustomer;
+        $customer->dni=$request->dni;
+        $customer->name=$request->name;
+        $customer->number_phone=$request->number_phone;
+        $customer->address=$request->address;
+        $customer->email=$request->email;
         $customer->save();
         // return redirect()->route('xx');
     }
