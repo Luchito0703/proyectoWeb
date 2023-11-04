@@ -34,9 +34,9 @@ class ContractsController extends Controller
     public function store(Request $request)
     {
         $contract=new Contract();
-        $contract->id=$request->id;
+        $contract->id_contract=$request->id_contract;
         $contract->id_contra=$request->id_contra;
-        $contract->dni_admin=$request->dni_admin;
+        $contract->dni_admin_proj=$request->dni_admin_proj;
         $contract->nit_customer=$request->nit_customer;
         $contract->save();
         // return redirect()->route('xx');
@@ -61,10 +61,10 @@ class ContractsController extends Controller
     public function update(Request $request, $id)
     {
         $contract=Contract::find($id);
-        $contract->id=$request->idContract;
-        $contract->id_contra=$request->idContractor;
-        $contract->dni_admin_proj=$request->dniAdminProj;
-        $contract->nit_customer=$request->nitCustomer;
+        $contract->id_contract=$request->id_contract;
+        $contract->id_contra=$request->id_contra;
+        $contract->dni_admin_proj=$request->dni_admin_proj;
+        $contract->nit_customer=$request->nit_customer;
         $contract->save();
         // return redirect()->route('xx');
     }
