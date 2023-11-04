@@ -1,84 +1,55 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\equipment;
 
 use Illuminate\Http\Request;
 
 class EquipmentsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function index()
     {
-        //
+        $equipments = equipments::all();
+        // return('x.index');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $equipment = new equipment();
+        $equipment-> id = $required->idEquipment;
+        $equipment->name=$required->nameEquipment;
+        $equipment->save();
+        // return redirect()->route('x.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit($id)
     {
-        //
+        $equipment = equipment::find($id);
+        // return view('x.edit_equipment',compact('equipment'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+   
     public function update(Request $request, $id)
     {
-        //
+        $equipment = equipment::find($id);
+        $equipment-> id = $required->idEquipment;
+        $equipment->name=$required->nameEquipment;
+        $equipment->save();
+        // return redirect()->route('x.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+ 
     public function destroy($id)
     {
-        //
+        $equipment = equipment::find($id);
+        $equipment->delete();
+        // return redirect()->route('x.index');
     }
 }
