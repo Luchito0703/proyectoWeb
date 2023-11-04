@@ -17,8 +17,8 @@ class EquipmentsController extends Controller
     public function store(Request $request)
     {
         $equipment = new equipment();
-        $equipment-> id = $required->idEquipment;
-        $equipment->name=$required->nameEquipment;
+        $equipment-> id_equipment= $required->id_equipment;
+        $equipment->name_equipment=$required->name_equipment;
         $equipment->save();
         // return redirect()->route('x.index');
     }
@@ -39,8 +39,8 @@ class EquipmentsController extends Controller
     public function update(Request $request, $id)
     {
         $equipment = equipment::find($id);
-        $equipment-> id = $required->idEquipment;
-        $equipment->name=$required->nameEquipment;
+        $equipment-> id_equipment= $required->id_equipment;
+        $equipment->name_equipment=$required->name_equipment;
         $equipment->save();
         // return redirect()->route('x.index');
     }

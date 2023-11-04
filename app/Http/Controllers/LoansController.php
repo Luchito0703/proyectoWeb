@@ -18,11 +18,11 @@ class LoansController extends Controller
     public function store(Request $request)
     {
         $loan = new loan();
-        $loan-> id = $request->idPrest;
-        $loan-> id_contra = $request->idContractor;
-        $loan-> id_team = $request->idTeam;
-        $loan-> date_dev = $request->dateDevolution;
-        $loan-> date_prest = $request->DateLoan;
+        $loan-> id_prest = $request->id_prest;
+        $loan-> id_contractor = $request->id_contractor;
+        $loan-> id_team = $request->id_team;
+        $loan-> date_devolution = $request->date_devolution;
+        $loan-> date_loan = $request->date_loan;
         $loan->save();
         // return redirect()->route('x.index');
     }
@@ -43,11 +43,11 @@ class LoansController extends Controller
     public function update(Request $request, $id)
     {
         $loan = loan::find($id);
-        $loan-> id = $request->idPrest;
-        $loan-> id_contra = $request->idContractor;
-        $loan-> id_team = $request->idTeam;
-        $loan-> date_dev = $request->dateDevolution;
-        $loan-> date_prest = $request->DateLoan;
+        $loan-> id_prest = $request->id_prest;
+        $loan-> id_Contractor = $request->id_Contractor;
+        $loan-> id_team = $request->id_team;
+        $loan-> date_devolution = $request->date_devolution;
+        $loan-> date_loan = $request->date_loan;
         $loan->save();
         // return redirect()->route('x.index');
     }

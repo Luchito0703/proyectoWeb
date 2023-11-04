@@ -24,11 +24,11 @@ class CustomersController extends Controller
     public function store(Request $request)
     {
         $customer=new Customer();
-        $customer->dni=$request->dni;
-        $customer->name=$request->nameCustomer;
-        $customer->number_phone=$request->numberCustomer;
-        $customer->address=$request->addressCustomer;
-        $customer->email=$request->emailCustomer;
+        $customer->dni_customer=$request->dni_customer;
+        $customer->name_customer=$request->name_customer;
+        $customer->number_customer=$request->number_customer;
+        $customer->address_customer=$request->address_customer;
+        $customer->email_customer=$request->email_customer;
         $customer->save();
         // return redirect()->route('xx');
 
@@ -48,11 +48,11 @@ class CustomersController extends Controller
     public function update(Request $request, $id)
     {
         $customer=Customer::find($id);
-        $customer->dni=$request->dni;
-        $customer->name=$request->name;
-        $customer->number_phone=$request->number_phone;
-        $customer->address=$request->address;
-        $customer->email=$request->email;
+        $customer->dni_customer=$request->dni_customer;
+        $customer->name_customer=$request->name_customer;
+        $customer->number_customer=$request->number_customer;
+        $customer->address_customer=$request->address_customer;
+        $customer->email_customer=$request->email_customer;
         $customer->save();
         // return redirect()->route('xx');
     }
