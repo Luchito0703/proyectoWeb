@@ -7,6 +7,15 @@ use App\Models\adminBoss;
 
 class AdminBossController extends Controller
 {
+    public function mostrarVista()
+    {
+        return view('mi_vista');
+    }
+
+    public function verVista()
+    {
+        return view('welcome');
+    }
 
     public function index()
     {
