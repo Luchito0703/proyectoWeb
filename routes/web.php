@@ -23,6 +23,8 @@ use App\Http\Controllers\LoansController;
 
 // Route::get('/',[AdminBossController::class,'mostrarVista'])->name('mostrar_vista');
 // Route::get('/boss',[AdminBossController::class,'verVista'])->name('welcome');
+
+Route::get('/boss/{adminBoss}', [AdminBossController::class, 'show']);
 Route::resource('boss',AdminBossController::class);
 Route::resource('project',AdminProjectsController::class);
 Route::resource('certificate',CertificatesController::class);

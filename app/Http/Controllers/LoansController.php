@@ -10,7 +10,7 @@ class LoansController extends Controller
     
     public function index()
     {
-        $loans = loans::all();
+        $loans = loan::all();
         // return view('x.index');
     }
 

@@ -10,19 +10,19 @@ class CertificatesController extends Controller
 
     public function index()
     {
-        $certificates = certificates::all();
+        $certificates = certificate::all();
         // return view('index',compact('certificates'));
     }
 
     public function store(Request $request)
     {
         $certificate = new certificate();
-        $certificate->id = $request->$idCertificate;
-        $certificate->id_contra = $request->$idContractor;
+        $certificate->id = $request->$id;
+        $certificate->id_contra = $request->$id_contra;
         $certificate->nit_costumer = $request->$nit_costumer;
-        $certificate->id_contract = $request->$idcontract;
-        $certificate->date_expedition = $request->$dateExpedition;
-        $certificate->issue = $request->$issueCertificate;
+        $certificate->id_contract = $request->$id_contract;
+        $certificate->date_expedition = $request->$date_expedition;
+        $certificate->issue = $request->$issue;
         $certificate->save();
         // return redirect()->route('x.index');
 

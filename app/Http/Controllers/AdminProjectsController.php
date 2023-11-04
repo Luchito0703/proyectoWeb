@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\adminProject;
 
 class AdminProjectsController extends Controller
 {
@@ -20,11 +21,11 @@ class AdminProjectsController extends Controller
     public function store(Request $request)
     {
         $adminProject = new adminProject();
-        $adminProject->id = $request->idProject;
-        $adminProject->name = $request->nameProject;
-        $adminProject->phone = $request->phoneProject;
-        $adminProject->address = $request->addressProject;
-        $adminProject->email = $request->emailProject;
+        $adminProject->dni = $request->dni;
+        $adminProject->name = $request->name;
+        $adminProject->number_phone = $request->number_phone;
+        $adminProject->address = $request->address;
+        $adminProject->email = $request->email;
         $adminProject->save();
         // return redirect()->route('x.index');
     }
@@ -43,11 +44,11 @@ class AdminProjectsController extends Controller
     public function update(Request $request, $id)
     {
         $adminProject = adminProject::find($id);
-        $adminProject->id = $request->idProject;
-        $adminProject->name = $request->nameProject;
-        $adminProject->phone = $request->phoneProject;
-        $adminProject->address = $request->addressProject;
-        $adminProject->email = $request->emailProject;
+        $adminProject->dni = $request->dni;
+        $adminProject->name = $request->name;
+        $adminProject->number_phone = $request->number_phone;
+        $adminProject->address = $request->address;
+        $adminProject->email = $request->email;
         $adminProject->save();
         // return redirect()->route('x.index');
     }

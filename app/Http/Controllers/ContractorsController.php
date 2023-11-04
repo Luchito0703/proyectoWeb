@@ -19,12 +19,12 @@ class ContractorsController extends Controller
     public function store(Request $request)
     {
         $contractor = new contractor();
-        $contractor-> id = $request->idContractor;
+        $contractor->id_contra = $request->id_contra;
         $contractor-> name = $request->nameContractor;
-        $contractor-> number_phone = $request->numberPhone_Contractor;
-        $contractor-> address = $request->addressContractor;
-        $contractor-> dni = $request->dniContractor;
-        $contractor-> email = $request->emailContractor;
+        $contractor-> number_phone = $request->number_phone;
+        $contractor-> address = $request->address;
+        $contractor-> dni = $request->dni;
+        $contractor-> email = $request->email;
         $contractor->save();
         // return redirect()->route('x.index');
     }

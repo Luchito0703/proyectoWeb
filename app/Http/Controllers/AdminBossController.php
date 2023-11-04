@@ -7,6 +7,10 @@ use App\Models\adminBoss;
 
 class AdminBossController extends Controller
 {
+    public function create()
+    {
+        return view('adminBoss.create');
+    }
     public function mostrarVista()
     {
         return view('mi_vista');
@@ -20,30 +24,18 @@ class AdminBossController extends Controller
     public function index()
     {
         $adminBosses = adminBoss::all();
-        // return response()->json($adminBosses);
         // return view(index);
     }
 
     public function store(Request $request)
     {
         $adminBoss = new adminBoss();
-        $adminBoss->id = $request->idBoss;
-        $adminBoss->name = $request->nameBoss;
-        $adminBoss->phone = $request->phoneBoss;
-        $adminBoss->address = $request->addressBoss;
-        $adminBoss->email = $request->emailBoss;
+        $adminBoss->dni = $request->dni;
+        $adminBoss->name = $request->name;
+        $adminBoss->number_phone = $request->number_phone;
+        $adminBoss->address = $request->address;
+        $adminBoss->email = $request->email;
         $adminBoss->save();
-        // if ($adminBoss->save()) {
-        //     return response()->json([
-        //         "status"=>"succes",
-        //         "message"=>"Author created succesfully"
-        //     ]);
-        // } else{
-        //     return response()->json([
-        //         "status"=>"Error",
-        //         "message"=>"Author  not created"
-        //     ]);
-        // }
         // return redirect()->route('x.index');
 
     }
@@ -62,11 +54,11 @@ class AdminBossController extends Controller
     public function update(Request $request, $id)
     {
         $adminBoss = adminBoss::find($id);
-        $adminBoss->id = $request->idBoss;
-        $adminBoss->name = $request->nameBoss;
-        $adminBoss->phone = $request->phoneBoss;
-        $adminBoss->address = $request->addressBoss;
-        $adminBoss->email = $request->emailBoss;
+        $adminBoss->dni = $request->dni;
+        $adminBoss->name = $request->name;
+        $adminBoss->number_phone = $request->number_phone;
+        $adminBoss->address = $request->address;
+        $adminBoss->email = $request->email;
         $adminBoss->save();
         // return redirect()->route('x.index');
     }
@@ -74,17 +66,6 @@ class AdminBossController extends Controller
     public function destroy($id)
     {
         $adminBoss = adminBoss::find($id);
-        // if ($adminBoss->delete()) {
-        //     return response()->json([
-        //         "status"=>"succes",
-        //         "message"=>"Author created succesfully"
-        //     ]);
-        // } else{
-        //     return response()->json([
-        //         "status"=>"Error",
-        //         "message"=>"Author  not created"
-        //     ]);
-        // }
         $adminBoss->delete();
         // return redirect()->route('x.index');
     }

@@ -34,10 +34,10 @@ class ContractsController extends Controller
     public function store(Request $request)
     {
         $contract=new Contract();
-        $contract->id=$request->idContract;
-        $contract->id_contra=$request->idContractor;
-        $contract->dni_admin_proj=$request->dniAdminProj;
-        $contract->nit_customer=$request->nitCustomer;
+        $contract->id=$request->id;
+        $contract->id_contra=$request->id_contra;
+        $contract->dni_admin=$request->dni_admin;
+        $contract->nit_customer=$request->nit_customer;
         $contract->save();
         // return redirect()->route('xx');
     }

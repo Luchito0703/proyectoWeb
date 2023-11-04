@@ -15,4 +15,3 @@ use App\Http\Controllers\AdminBossController;
 |
 */
 
-Route::apiResource("admin",AdminBossController::class);
