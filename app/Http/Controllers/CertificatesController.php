@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\certificate;
 use App\Models\contractor;
-use App\Models\contract;
+use App\Models\contracts;
 use App\Models\customer;
 
 class CertificatesController extends Controller
@@ -15,7 +15,7 @@ class CertificatesController extends Controller
     {
         $certificates = certificate::all();
         $contractors=contractor::all();
-        $contracts=contract::all();
+        $contracts=contracts::all();
         $customers=customer::all();
         return view('certificado.gestion_certificate',compact('certificates','contractors','contracts','customers'));
     }

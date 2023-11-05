@@ -16,6 +16,21 @@ class EquipmentsController extends Controller
 
     public function store(Request $request)
     {
+        $rules=[
+            'id_equipment' => 'required|string',
+            'name_equipment' => 'required|string',
+        ];
+
+        $messages=[
+            'id_equipment.required' => 'El campo dni del cliente es obligatorio.',
+            'id_equipment.string' => 'El campo dni del cliente debe ser valido.',
+            'name_equipment.required' => 'El campo nombre del cliente es obligatorio.',
+            'name_equipment.string' => 'El campo nombre del cliente debe ser cadena de texto.',
+            
+        ];
+
+        $this->validate($request, $rules,$messages);
+
         $equipment = new equipment();
         $equipment-> id_equipment= $request->id_equipment;
         $equipment->name_equipment=$request->name_equipment;
