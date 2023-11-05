@@ -9,6 +9,11 @@
 <div class="container text-center">
         <div>
             <h1 class="text-center">Solicitudes de equipo:</h1>
+            @if ($errors->any())
+	            @foreach ($errors->all() as $error)
+		            <div class="alert alert-danger" role="alert">{{$error}}</div>
+	            @endforeach
+            @endif
             <form action="{{ route ('loans.store') }}" method="POST">
                 @csrf
                 <label for="prestamo">Identificador del prestamo</label>

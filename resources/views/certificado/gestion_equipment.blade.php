@@ -8,6 +8,11 @@
 <body>
     <div>
         <div>
+            @if ($errors->any())
+	            @foreach ($errors->all() as $error)
+		            <div class="alert alert-danger" role="alert">{{$error}}</div>
+	            @endforeach
+            @endif
             <form action="{{ route('certificates.store') }}" method="POST">
                 @csrf
                 <label for="idCertificado">Ingresar Id del certificado</label>

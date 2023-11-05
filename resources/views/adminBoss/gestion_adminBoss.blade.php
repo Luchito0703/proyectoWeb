@@ -87,23 +87,38 @@
                 <div class="container pt-5 container text-center">
                     <div>
                         <h2>Crear nuevo Boss</h2>  
+                        @if ($errors->any())
+	                        @foreach ($errors->all() as $error)
+		                        <div class="alert alert-danger" role="alert">{{$error}}</div>
+	                        @endforeach
+                        @endif
                         <form action="{{ route('adminBoss.store') }}" method="post">
                             @csrf
-                            <label for="dni">Cedula:</label><br>
-                            <input type="text" id="dni" name="dni"><br><br>
+                            <div class="form-group">
+                                <label for="dni">Cedula:</label>
+                                <input type="text" class="form-control" id="dni" name="dni">
+                            </div>
 
-                            <label for="nombre">Nombre:</label><br>
-                            <input type="text" id="nombre" name="name"><br><br>
+                            <div class="form-group">
+                                <label for="nombre">Nombre:</label>
+                                <input type="text" class="form-control" id="nombre" name="name">
+                            </div>
 
-                            <label for="telefono">Teléfono:</label><br>
-                            <input type="text" id="telefono" name="number_phone"><br><br>
+                            <div class="form-group">
+                                <label for="telefono">Teléfono:</label>
+                                <input type="text" class="form-control" id="telefono" name="number_phone">
+                            </div>
 
-                            <label for="direccion">Dirección:</label><br>
-                            <input type="text" id="direccion" name="address"><br><br>
+                            <div class="form-group">
+                                <label for="direccion">Dirección:</label>
+                                <input type="text" class="form-control" id="direccion" name="address">
+                            </div>
 
-                            <label for="email">Email:</label><br>
-                            <input type="email" id="email" name="email"><br><br>
-
+                            <div class="form-group">
+                                <label for="email">Email:</label>
+                                <input type="email" class="form-control" id="email" name="email">
+                            </div>
+                            
                             <button type="submit" class="btn btn-success">Guardar</button>
                         </form>
                     </div>

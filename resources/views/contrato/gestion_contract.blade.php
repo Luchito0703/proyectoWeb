@@ -83,6 +83,11 @@
 <body>
     <div>
         <div>
+            @if ($errors->any())
+	            @foreach ($errors->all() as $error)
+		            <div class="alert alert-danger" role="alert">{{$error}}</div>
+	            @endforeach
+            @endif
             <form action="{{ route('contracts.store') }}" method="post">
                 @csrf
                 <label for="contrato">Identificador del contrato</label>
