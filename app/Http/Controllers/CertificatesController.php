@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\certificate;
+use App\Models\contractor;
+use App\Models\contracts;
+use App\Models\customer;
 
 class CertificatesController extends Controller
 {

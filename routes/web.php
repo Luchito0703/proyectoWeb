@@ -10,26 +10,14 @@ use App\Http\Controllers\CustomersController;
 use App\Http\Controllers\EquipmentsController;
 use App\Http\Controllers\LoansController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+Route::get("/loan",[LoansController::class,'index'])->name("loans.index");
+Route::post("/loan",[LoansController::class,'store'])->name("loans.store");
+Route::delete("/loan/{id}",[LoansController::class,'destroy'])->name("loans.destroy");
+Route::put("/loan/{id}",[LoansController::class,'update'])->name("loans.update");
+Route::get("/loan_edit/{id}",[LoansController::class,'edit'])->name("loans.edit");
 
-// Route::get('/',[AdminBossController::class,'mostrarVista'])->name('mostrar_vista');
-// Route::get('/boss',[AdminBossController::class,'verVista'])->name('welcome');
-
-Route::get('/boss/{adminBoss}', [AdminBossController::class, 'show']);
-Route::resource('boss',AdminBossController::class);
-Route::resource('project',AdminProjectsController::class);
-Route::resource('certificate',CertificatesController::class);
-Route::resource('contractor',ContractorsController::class);
-Route::resource('contract',ContractsController::class);
-Route::resource('customer',CustomersController::class);
-Route::resource('equipment',EquipmentsController::class);
-Route::resource('loan',LoansController::class);
+Route::get("/contractor",[ContractorsController::class,'index'])->name("contractors.index");
+Route::post("/contractor",[ContractorsController::class,'store'])->name("contractors.store");
+Route::delete("/contractor/{id}",[ContractorsController::class,'destroy'])->name("contractors.destroy");
+Route::put("/contractor/{id}",[ContractorsController::class,'update'])->name("contractors.update");
+Route::get("/contractor_edit/{id}",[ContractorsController::class,'edit'])->name("contractors.edit");

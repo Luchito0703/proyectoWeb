@@ -10,8 +10,8 @@ class ContractorsController extends Controller
 
     public function index()
     {
-        $contractor = contractor::all();
-        // return view('index');
+        $contractors = contractor::all();
+        return view('contractor.create',compact('contractors'));
     }
 
   
@@ -26,7 +26,7 @@ class ContractorsController extends Controller
         $contractor-> dni_contractor = $request->dni_contractor;
         $contractor-> email_contractor = $request->email_contractor;
         $contractor->save();
-        // return redirect()->route('x.index');
+        return redirect()->route('contractors.index');
     }
 
 
@@ -38,7 +38,7 @@ class ContractorsController extends Controller
     public function edit($id)
     {
         $contractors = contractors::find($id);
-        // return view('x.edit_contractor',compact('contractor'));
+        return view('contractors.edit_contractor',compact('contractors'));
     }
 
   

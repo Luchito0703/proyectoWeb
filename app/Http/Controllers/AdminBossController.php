@@ -36,7 +36,7 @@ class AdminBossController extends Controller
         $adminBoss->address = $request->address;
         $adminBoss->email = $request->email;
         $adminBoss->save();
-        // return redirect()->route('x.index');
+        return redirect()->route('index');
 
     }
 
