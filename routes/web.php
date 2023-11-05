@@ -10,6 +10,12 @@ use App\Http\Controllers\CustomersController;
 use App\Http\Controllers\EquipmentsController;
 use App\Http\Controllers\LoansController;
 
+Route::get("/jefe",[AdminBossController::class,'index'])->name("adminBoss.index");
+Route::post("/jefe",[AdminBossController::class,'store'])->name("adminBoss.store");
+Route::delete("/jefe/{id}",[AdminBossController::class,'destroy'])->name("adminBoss.destroy");
+Route::put("/jefe/{id}",[AdminBossController::class,'update'])->name("adminBoss.update");
+Route::get("/jefe_edit/{id}",[AdminBossController::class,'edit'])->name("adminBoss.edit");
+
 Route::get("/loan",[LoansController::class,'index'])->name("loans.index");
 Route::post("/loan",[LoansController::class,'store'])->name("loans.store");
 Route::delete("/loan/{id}",[LoansController::class,'destroy'])->name("loans.destroy");
@@ -21,3 +27,9 @@ Route::post("/contractor",[ContractorsController::class,'store'])->name("contrac
 Route::delete("/contractor/{id}",[ContractorsController::class,'destroy'])->name("contractors.destroy");
 Route::put("/contractor/{id}",[ContractorsController::class,'update'])->name("contractors.update");
 Route::get("/contractor_edit/{id}",[ContractorsController::class,'edit'])->name("contractors.edit");
+
+Route::get("/proj",[AdminProjectsController::class,'index'])->name("adminProjects.index");
+Route::post("/proj",[AdminProjectsController::class,'store'])->name("adminProjects.store");
+Route::delete("/proj/{id}",[AdminProjectsController::class,'destroy'])->name("adminProjects.destroy");
+Route::put("/proj/{id}",[AdminProjectsController::class,'update'])->name("adminProjects.update");
+Route::get("/proj_edit/{id}",[AdminProjectsController::class,'edit'])->name("adminProjects.edit");

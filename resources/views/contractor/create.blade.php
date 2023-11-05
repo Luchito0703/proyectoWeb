@@ -47,7 +47,7 @@
                             <td>{{$contractor->dni_contractor}}</td>
                             <td>{{$contractor->email_contractor}}</td>
                             <td>
-                                <a href="{{ route('contractors.edit',$contractor->id) }}">Editar</a>
+                                <a href="{{ route('contractors.edit', ['id' => $contractor->id]) }}">Editar</a>
                                 <form action="{{ route('contractors.destroy',$contractor->id) }}" method="post">
                                     @csrf
                                     @method('DELETE')
@@ -58,7 +58,7 @@
                     @endforeach
                 </tbody>
             </table>
-        </div>
+        </div> 
     </div>
     
 </body>

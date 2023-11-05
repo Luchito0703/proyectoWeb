@@ -20,7 +20,7 @@ class LoansController extends Controller
    
     public function store(Request $request)
     {
-        dd($request->all());
+        // dd($request->all());
         $loan = new loan();
         $loan-> id_prest = $request->id_prest;
         $loan-> id_contractor = $request->id_contractor;
