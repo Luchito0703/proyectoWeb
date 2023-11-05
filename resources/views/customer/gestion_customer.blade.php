@@ -54,7 +54,7 @@
                                 <form action="{{route('customer.destroy',$customer->id)}}" method="post">
                                     @csrf
                                     @method('DELETE')
-                                    <button type = "submit">Eliminar</button>
+                                    <button type = "submit" class="btn btn-danger">Eliminar</button>
                                 </form>
                             </td>
                         </tr>
