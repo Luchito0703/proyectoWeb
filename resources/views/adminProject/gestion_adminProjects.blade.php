@@ -11,15 +11,15 @@
             <form action="{{ route('adminProjects.store') }}" method="post">
                 @csrf
                 <label for="identificador">Ingrese su numero de cedula</label>
-                <input type="text" name="dni" id="identificador">
+                <input type="text" name="dni" id="identificador" required>
                 <label for="nombre">Ingrese su nombre</label>
-                <input type="text" name="name">
+                <input type="text" name="name" required>
                 <label for="telefono">Ingrese su numero de telefono</label>
-                <input type="text" name="number_phone" id="telefono">
+                <input type="text" name="number_phone" id="telefono" required>
                 <label for="direccion">Ingrese su direccion</label>
-                <input type="text" name="address" id="direccion">
+                <input type="text" name="address" id="direccion" required>
                 <label for="email">Ingrese su email</label>
-                <input type="text" name="email" id="email">
+                <input type="text" name="email" id="email" required>
                 <button type="submit">Enviar</button>
             </form>
         </div>

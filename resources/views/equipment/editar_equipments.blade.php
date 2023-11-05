@@ -13,9 +13,9 @@
                 @csrf
                 @method('PUT')
                 <label for="id">Ingrese nuevo id</label>
-                <input type="text" name="id_equipment" id="id" value="{{$equipments->id_equipment}}" readonly>
+                <input type="text" name="id_equipment" id="id" value="{{$equipments->id_equipment}}" readonly required>
                 <label for="name">Ingrese nuevo nombre del equipo: </label>
-                <input type="text" name="name_equipment" id="name" value="{{$equipments->name_equipment}}">
+                <input type="text" name="name_equipment" id="name" value="{{$equipments->name_equipment}}" required>
                 <button type="submit">Actualizar</button>
             </form>
         </div>

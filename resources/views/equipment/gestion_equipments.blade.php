@@ -11,9 +11,9 @@
             <form action="{{route('equipments.store')}}" method="post">
                 @csrf
                 <label for="id">Ingrese referencia del equipo</label>
-                <input type="text" name="id_equipment" id="id">
+                <input type="text" name="id_equipment" id="id" required>
                 <label for="name">Ingrese nombre del equipo</label>
-                <input type="text" name="name_equipment" id="name">
+                <input type="text" name="name_equipment" id="name" required>
                 <button type="submit">Guardar</button>
             </form>
         </div>

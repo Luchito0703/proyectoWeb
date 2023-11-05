@@ -13,19 +13,19 @@
                 @csrf
                 @method('PUT')
                 <label for="dni">Cedula:</label><br>
-                <input type="text" id="dni" name="dni" value="{{$adminBoss->dni}}"><br><br>
+                <input type="text" id="dni" name="dni" value="{{$adminBoss->dni}}" required><br><br>
 
                 <label for="nombre">Nombre:</label><br>
-                <input type="text" id="nombre" name="name" value="{{$adminBoss->name}}"><br><br>
+                <input type="text" id="nombre" name="name" value="{{$adminBoss->name}}" required><br><br>
 
                 <label for="telefono">Teléfono:</label><br>
-                <input type="text" id="telefono" name="number_phone" value="{{$adminBoss->number_phone}}"><br><br>
+                <input type="text" id="telefono" name="number_phone" value="{{$adminBoss->number_phone}}" required><br><br>
 
                 <label for="direccion">Dirección:</label><br>
-                <input type="text" id="direccion" name="address" value="{{$adminBoss->address}}"><br><br>
+                <input type="text" id="direccion" name="address" value="{{$adminBoss->address}}" required><br><br>
 
                 <label for="email">Email:</label><br>
-                <input type="email" id="email" name="email" value="{{$adminBoss->email}}"><br><br>
+                <input type="email" id="email" name="email" value="{{$adminBoss->email}}" required><br><br>
 
                 <button type="submit">Actualizar</button>
 

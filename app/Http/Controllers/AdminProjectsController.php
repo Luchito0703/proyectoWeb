@@ -20,6 +20,29 @@ class AdminProjectsController extends Controller
 
     public function store(Request $request)
     {
+        $rules=[
+            'dni' => 'required|numeric',
+            'name' => 'required|string',
+            'number_phone' => 'required|numeric',
+            'address' => 'required|string',
+            'email' => 'required|email'
+        ];
+
+        $messages=[
+            'dni.required' => 'El campo DNI es obligatorio.',
+            'dni.numeric' => 'El campo DNI debe ser numérico.',
+            'name.required' => 'El campo Nombre es obligatorio.',
+            'name.string' => 'El campo Nombre debe ser una cadena de texto.',
+            'number_phone.required' => 'El campo Número de teléfono es obligatorio.',
+            'number_phone.numeric' => 'El campo Número de teléfono debe ser numérico.',
+            'address.required' => 'El campo Dirección es obligatorio.',
+            'address.string' => 'El campo Dirección debe ser una cadena de texto.',
+            'email.required' => 'El campo Correo Electrónico es obligatorio.',
+            'email.email' => 'El campo Correo Electrónico debe ser una dirección de correo electrónico válida.'
+        ];
+
+        $this->validate($request, $rules,$messages);
+
         $adminProject = new adminProject();
         $adminProject->dni = $request->dni;
         $adminProject->name = $request->name;

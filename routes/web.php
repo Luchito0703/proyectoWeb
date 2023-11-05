@@ -39,3 +39,9 @@ Route::post("/proj",[AdminProjectsController::class,'store'])->name("adminProjec
 Route::delete("/proj/{id}",[AdminProjectsController::class,'destroy'])->name("adminProjects.destroy");
 Route::put("/proj/{id}",[AdminProjectsController::class,'update'])->name("adminProjects.update");
 Route::get("/proj_edit/{id}",[AdminProjectsController::class,'edit'])->name("adminProjects.edit");
+
+Route::get("/certificado",[CertificatesController::class,'index'])->name("certificates.index");
+Route::post("/certificado",[CertificatesController::class,'store'])->name("certificates.store");
+Route::delete("/certificado/{id}",[CertificatesController::class,'destroy'])->name("certificates.destroy");
+Route::put("/certificado/{id}",[CertificatesController::class,'update'])->name("certificates.update");
+Route::get("/certificado_edit/{id}",[CertificatesController::class,'edit'])->name("certificates.edit");
