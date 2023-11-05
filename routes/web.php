@@ -16,6 +16,12 @@ Route::delete("/jefe/{id}",[AdminBossController::class,'destroy'])->name("adminB
 Route::put("/jefe/{id}",[AdminBossController::class,'update'])->name("adminBoss.update");
 Route::get("/jefe_edit/{id}",[AdminBossController::class,'edit'])->name("adminBoss.edit");
 
+Route::get("/equipment",[equipmentsController::class,'index'])->name("equipments.index");
+Route::post("/equipment",[equipmentsController::class,'store'])->name("equipments.store");
+Route::delete("/equipment/{id}",[equipmentsController::class,'destroy'])->name("equipments.destroy");
+Route::put("/equipment/{id}",[equipmentsController::class,'update'])->name("equipments.update");
+Route::get("/equipment_edit/{id}",[equipmentsController::class,'edit'])->name("equipments.edit");
+
 Route::get("/loan",[LoansController::class,'index'])->name("loans.index");
 Route::post("/loan",[LoansController::class,'store'])->name("loans.store");
 Route::delete("/loan/{id}",[LoansController::class,'destroy'])->name("loans.destroy");
