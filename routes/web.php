@@ -40,6 +40,7 @@ Route::delete("/proj/{id}",[AdminProjectsController::class,'destroy'])->name("ad
 Route::put("/proj/{id}",[AdminProjectsController::class,'update'])->name("adminProjects.update");
 Route::get("/proj_edit/{id}",[AdminProjectsController::class,'edit'])->name("adminProjects.edit");
 
+
 Route::get("/contrato",[ContractsController::class,'index'])->name("contracts.index");
 Route::post("/contrato",[ContractsController::class,'store'])->name("contracts.store");
 Route::delete("/contrato/{id}",[ContractsController::class,'destroy'])->name("contracts.destroy");
@@ -51,3 +52,9 @@ Route::post("/certificado",[CertificatesController::class,'store'])->name("certi
 Route::delete("/certificado/{id}",[CertificatesController::class,'destroy'])->name("certificates.destroy");
 Route::put("/certificado/{id}",[CertificatesController::class,'update'])->name("certificates.update");
 Route::get("/certificado_edit/{id}",[CertificatesController::class,'edit'])->name("certificates.edit");
+
+Route::get("/cliente",[CustomersController::class,'index'])->name("customer.index");
+Route::post("/cliente",[CustomersController::class,'store'])->name("customer.store");
+Route::delete("/cliente/{id}",[CustomersController::class,'destroy'])->name("customer.destroy");
+Route::put("/cliente/{id}",[CustomersController::class,'update'])->name("customer.update");
+Route::get("/cliente_edit/{id}",[CustomersController::class,'edit'])->name("customer.edit");

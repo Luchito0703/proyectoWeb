@@ -10,27 +10,21 @@ class CustomersController extends Controller
 
     public function index()
     {
-        $customers=Customer::all();
-        // return view(index);
-        
+        $customers = Customer::all();
+        return view('customer.gestion_customer',compact('customers'));   
     }
 
-
-    public function create()
-    {
-        //
-    }
 
     public function store(Request $request)
     {
-        $customer=new Customer();
+        $customer =new Customer();
         $customer->dni_customer=$request->dni_customer;
         $customer->name_customer=$request->name_customer;
         $customer->number_customer=$request->number_customer;
         $customer->address_customer=$request->address_customer;
         $customer->email_customer=$request->email_customer;
         $customer->save();
-        // return redirect()->route('xx');
+        return redirect()->route('customer.index');
 
     }
 
@@ -42,7 +36,7 @@ class CustomersController extends Controller
     public function edit($id)
     {
         $customer=Customer::find($id);
-        // return view('xx',compact('customer'));
+        return view('customer.editar_customer',compact('customer'));
     }
 
     public function update(Request $request, $id)
@@ -54,13 +48,13 @@ class CustomersController extends Controller
         $customer->address_customer=$request->address_customer;
         $customer->email_customer=$request->email_customer;
         $customer->save();
-        // return redirect()->route('xx');
+        return redirect()->route('customer.index');
     }
 
     public function destroy($id)
     {
         $customer=Customer::find($id);
         $customer->delete();
-        // return redirect()->route('xx');
+        return redirect()->route('customer.index');
     }
 }
