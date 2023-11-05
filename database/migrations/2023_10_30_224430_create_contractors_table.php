@@ -15,11 +15,12 @@ class CreateContractorsTable extends Migration
     {
         Schema::create('contractors', function (Blueprint $table) {
             $table->id("Id")->comment("Id del contratista");
-            $table->string("name")->comment("Nombre del contratista");
-            $table->integer("number_phone")->comment("Numero de telefono del contratista");
-            $table->string("address")->comment("Direccion del contratista");
-            $table->integer("dni")->comment("Cedula del contratista");
-            $table->string("email")->comment("Email del contratista");
+            $table->string("id_contractor")->comment("id del contratista");
+            $table->string("name_contractor")->comment("Nombre del contratista");
+            $table->string("number_phone")->comment("Numero de telefono del contratista");
+            $table->string("address_contractor")->comment("Direccion del contratista");
+            $table->string("dni_contractor")->comment("Cedula del contratista");
+            $table->string("email_contractor")->comment("Email del contratista");
             $table->timestamps();
         });
     }

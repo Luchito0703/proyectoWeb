@@ -10,8 +10,8 @@ class ContractorsController extends Controller
 
     public function index()
     {
-        $contractor = contractor::all();
-        // return view('index');
+        $contractors = contractor::all();
+        return view('contractor.create',compact('contractors'));
     }
 
   
@@ -19,14 +19,14 @@ class ContractorsController extends Controller
     public function store(Request $request)
     {
         $contractor = new contractor();
-        $contractor-> id = $request->idContractor;
-        $contractor-> name = $request->nameContractor;
-        $contractor-> number_phone = $request->numberPhone_Contractor;
-        $contractor-> address = $request->addressContractor;
-        $contractor-> dni = $request->dniContractor;
-        $contractor-> email = $request->emailContractor;
+        $contractor-> id_contractor = $request->id_contractor;
+        $contractor-> name_contractor = $request->name_contractor;
+        $contractor-> number_phone = $request->number_phone;
+        $contractor-> address_contractor = $request->address_contractor;
+        $contractor-> dni_contractor = $request->dni_contractor;
+        $contractor-> email_contractor = $request->email_contractor;
         $contractor->save();
-        // return redirect()->route('x.index');
+        return redirect()->route('contractors.index');
     }
 
 
@@ -37,22 +37,22 @@ class ContractorsController extends Controller
 
     public function edit($id)
     {
-        $contractors = contractors::find($id);
-        // return view('x.edit_contractor',compact('contractor'));
+        $contractors = contractor::find($id);
+        return view('contractors.edit_contractor', compact('contractors'));
     }
 
   
     public function update(Request $request, $id)
     {
         $contractor = contractor::find($id);
-        $contractor-> id = $request->idContractor;
-        $contractor-> name = $request->nameContractor;
-        $contractor-> number_phone = $request->numberPhone_Contractor;
-        $contractor-> address = $request->addressContractor;
-        $contractor-> dni = $request->dniContractor;
-        $contractor-> email = $request->emailContractor;
+        $contractor-> id_contractor = $request->id_contractor;
+        $contractor-> name_contractor = $request->name_contractor;
+        $contractor-> number_phone = $request->number_phone;
+        $contractor-> address_contractor = $request->address_contractor;
+        $contractor-> dni_contractor = $request->dni_contractor;
+        $contractor-> email_contractor = $request->email_contractor;
         $contractor->save();
-        // return redirect()->route('x.index');
+        return redirect()->route('contractors.index');
     }
 
     
@@ -60,6 +60,6 @@ class ContractorsController extends Controller
     {
         $contractor = contractor::find($id);
         $contractor->delete();
-        // return redirect->route('x.index');
+        return redirect()->route('contractors.index');
     }
 }

@@ -4,27 +4,31 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\loan;
+use App\Models\contractor;
+use App\Models\equipment;
 
 class LoansController extends Controller
-{
-    
+{    
     public function index()
     {
-        $loans = loans::all();
-        // return view('x.index');
+        $loans = loan::all();
+        $contractors = contractor::all();
+        $equipments = equipment::all();
+        return view('loan.create',compact('loans','contractors','equipments'));
     }
 
    
     public function store(Request $request)
     {
+        // dd($request->all());
         $loan = new loan();
-        $loan-> id = $request->idPrest;
-        $loan-> id_contra = $request->idContractor;
-        $loan-> id_team = $request->idTeam;
-        $loan-> date_dev = $request->dateDevolution;
-        $loan-> date_prest = $request->DateLoan;
+        $loan-> id_prest = $request->id_prest;
+        $loan-> id_contractor = $request->id_contractor;
+        $loan-> id_equipment = $request->id_equipment;
+        $loan-> date_devolution = $request->date_devolution;
+        $loan-> date_loan = $request->date_loan;
         $loan->save();
-        // return redirect()->route('x.index');
+        return redirect()->route('loan.index');
     }
 
 
@@ -36,18 +40,20 @@ class LoansController extends Controller
     public function edit($id)
     {
         $loan = loan::find($id);
-        // return view('x.edit_loan',compact('loan'));
+        $contractors = contractor::all();
+        $equipments = equipment::all();
+        return view('loan.edit_loan',compact('loan','contractors','equipments'));
     }
 
    
     public function update(Request $request, $id)
     {
         $loan = loan::find($id);
-        $loan-> id = $request->idPrest;
-        $loan-> id_contra = $request->idContractor;
-        $loan-> id_team = $request->idTeam;
-        $loan-> date_dev = $request->dateDevolution;
-        $loan-> date_prest = $request->DateLoan;
+        $loan-> id_prest = $request->id_prest;
+        $loan-> id_contractor = $request->id_contractor;
+        $loan-> id_equipment = $request->id_equipment;
+        $loan-> date_devolution = $request->date_devolution;
+        $loan-> date_loan = $request->date_loan;
         $loan->save();
         // return redirect()->route('x.index');
     }

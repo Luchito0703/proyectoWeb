@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\contract;
+use App\Models\customer;
+use App\Models\contractor;
+use App\Models\adminProject;
 
 class ContractsController extends Controller
 {
@@ -13,7 +17,7 @@ class ContractsController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**
@@ -26,59 +30,50 @@ class ContractsController extends Controller
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
-        //
+        $contract=new Contract();
+        $contract->id_contract=$request->id_contract;
+        $contract->id_contra=$request->id_contra;
+        $contract->dni_admin_proj=$request->dni_admin_proj;
+        $contract->nit_customer=$request->nit_customer;
+        $contract->save();
+        // return redirect()->route('xx');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+   
     public function edit($id)
     {
-        //
+        $contract=Contract::find($id);
+        $contractors=Contractor::all();
+        $customers=Customer::all();
+        $adminProjects=adminProject::all();
+        // return view('xx',compact('contract','contractors','customers','adminProjects'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
-        //
+        $contract=Contract::find($id);
+        $contract->id_contract=$request->id_contract;
+        $contract->id_contra=$request->id_contra;
+        $contract->dni_admin_proj=$request->dni_admin_proj;
+        $contract->nit_customer=$request->nit_customer;
+        $contract->save();
+        // return redirect()->route('xx');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function destroy($id)
     {
-        //
+        $contract=Contract::find($id);
+        $contract->delete();
+        // return redirect()->route('xx');
     }
 }
