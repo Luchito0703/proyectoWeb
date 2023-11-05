@@ -7,24 +7,10 @@ use App\Models\adminBoss;
 
 class AdminBossController extends Controller
 {
-    public function create()
-    {
-        return view('adminBoss.create');
-    }
-    public function mostrarVista()
-    {
-        return view('mi_vista');
-    }
-
-    public function verVista()
-    {
-        return view('welcome');
-    }
-
     public function index()
     {
         $adminBosses = adminBoss::all();
-        // return view(index);
+        return view('adminBoss.gestion_adminBoss',compact('adminBosses'));
     }
 
     public function store(Request $request)
@@ -36,7 +22,7 @@ class AdminBossController extends Controller
         $adminBoss->address = $request->address;
         $adminBoss->email = $request->email;
         $adminBoss->save();
-        // return redirect()->route('x.index');
+        return redirect()->route('adminBoss.index');
 
     }
 
@@ -47,8 +33,8 @@ class AdminBossController extends Controller
 
     public function edit($id)
     {
-        $adminBoss = adminBoss::find();
-        // return view('x.editar',compact('adminBoss'));
+        $adminBoss = adminBoss::find($id);
+        return view('adminBoss.editar_adminBoss',compact('adminBoss'));
     }
 
     public function update(Request $request, $id)
@@ -60,13 +46,13 @@ class AdminBossController extends Controller
         $adminBoss->address = $request->address;
         $adminBoss->email = $request->email;
         $adminBoss->save();
-        // return redirect()->route('x.index');
+        return redirect()->route('adminBoss.index');
     }
 
     public function destroy($id)
     {
         $adminBoss = adminBoss::find($id);
         $adminBoss->delete();
-        // return redirect()->route('x.index');
+        return redirect()->route('adminBoss.index');
     }
 }

@@ -4,27 +4,31 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\loan;
+use App\Models\contractor;
+use App\Models\equipment;
 
 class LoansController extends Controller
-{
-    
+{    
     public function index()
     {
         $loans = loan::all();
-        // return view('x.index');
+        $contractors = contractor::all();
+        $equipments = equipment::all();
+        return view('loan.create',compact('loans','contractors','equipments'));
     }
 
    
     public function store(Request $request)
     {
+        // dd($request->all());
         $loan = new loan();
         $loan-> id_prest = $request->id_prest;
         $loan-> id_contractor = $request->id_contractor;
-        $loan-> id_team = $request->id_team;
+        $loan-> id_equipment = $request->id_equipment;
         $loan-> date_devolution = $request->date_devolution;
         $loan-> date_loan = $request->date_loan;
         $loan->save();
-        // return redirect()->route('x.index');
+        return redirect()->route('loan.index');
     }
 
 
@@ -36,7 +40,9 @@ class LoansController extends Controller
     public function edit($id)
     {
         $loan = loan::find($id);
-        // return view('x.edit_loan',compact('loan'));
+        $contractors = contractor::all();
+        $equipments = equipment::all();
+        return view('loan.edit_loan',compact('loan','contractors','equipments'));
     }
 
    
@@ -44,8 +50,8 @@ class LoansController extends Controller
     {
         $loan = loan::find($id);
         $loan-> id_prest = $request->id_prest;
-        $loan-> id_Contractor = $request->id_Contractor;
-        $loan-> id_team = $request->id_team;
+        $loan-> id_contractor = $request->id_contractor;
+        $loan-> id_equipment = $request->id_equipment;
         $loan-> date_devolution = $request->date_devolution;
         $loan-> date_loan = $request->date_loan;
         $loan->save();

@@ -15,7 +15,7 @@ class CreateContractsTable extends Migration
     {
         Schema::create('contracts', function (Blueprint $table) {
             $table->id();
-            $table->string("id_ccontract")->comment("ID del contrato");
+            $table->string("id_contract")->comment("ID del contrato");
             $table->unsignedBigInteger("id_contra")->comment("ID del contratista");
             $table->foreign("id_contra")->references("id")->on("contractors");
             $table->unsignedBigInteger("dni_admin_proj")->comment("Cedula del administrador del proyecto");

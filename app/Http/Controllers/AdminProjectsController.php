@@ -15,7 +15,7 @@ class AdminProjectsController extends Controller
     public function index()
     {
         $adminProjects = adminProject::all();
-        // return view(index);
+        return view('adminProject.gestion_adminProjects',compact("adminProjects"));
     }
 
     public function store(Request $request)
@@ -27,7 +27,7 @@ class AdminProjectsController extends Controller
         $adminProject->address = $request->address;
         $adminProject->email = $request->email;
         $adminProject->save();
-        // return redirect()->route('x.index');
+        return redirect()->route('adminProjects.index');
     }
 
     public function show($id)
@@ -38,7 +38,7 @@ class AdminProjectsController extends Controller
     public function edit($id)
     {
         $adminProject = adminProject::find($id);
-        // return view('x.editar',compact('adminBoss'));
+        return view('adminProject.editar_adminProject',compact('adminProject'));
     }
 
     public function update(Request $request, $id)
@@ -50,13 +50,13 @@ class AdminProjectsController extends Controller
         $adminProject->address = $request->address;
         $adminProject->email = $request->email;
         $adminProject->save();
-        // return redirect()->route('x.index');
+        return redirect()->route('adminProjects.index');
     }
 
     public function destroy($id)
     {
-        $adminProject = admiProject::find($id);
+        $adminProject = adminProject::find($id);
         $adminProject->delete();
-        // return redirect()->route('x.index');
+        return redirect()->route('adminProjects.index');
     }
 }

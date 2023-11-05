@@ -17,7 +17,7 @@ class ContractsController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**
