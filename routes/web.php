@@ -33,3 +33,9 @@ Route::post("/proj",[AdminProjectsController::class,'store'])->name("adminProjec
 Route::delete("/proj/{id}",[AdminProjectsController::class,'destroy'])->name("adminProjects.destroy");
 Route::put("/proj/{id}",[AdminProjectsController::class,'update'])->name("adminProjects.update");
 Route::get("/proj_edit/{id}",[AdminProjectsController::class,'edit'])->name("adminProjects.edit");
+
+Route::get("/cliente",[CustomersController::class,'index'])->name("customer.index");
+Route::post("/cliente",[CustomersController::class,'store'])->name("customer.store");
+Route::delete("/cliente/{id}",[CustomersController::class,'destroy'])->name("customer.destroy");
+Route::put("/cliente/{id}",[CustomersController::class,'update'])->name("customer.update");
+Route::get("/cliente_edit/{id}",[CustomersController::class,'edit'])->name("customer.edit");
