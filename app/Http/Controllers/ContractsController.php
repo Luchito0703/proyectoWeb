@@ -10,21 +10,16 @@ use App\Models\adminProject;
 
 class ContractsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
-        
+        $contracts = contract::all();
+        $contractors = contractor::all();
+        $adminProjects = adminProject::all();
+        $customers = customer::all();
+        return view('contrato.gestion_contract',compact('contracts','contractors','adminProjects','customers'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         //
@@ -39,7 +34,7 @@ class ContractsController extends Controller
         $contract->dni_admin_proj=$request->dni_admin_proj;
         $contract->nit_customer=$request->nit_customer;
         $contract->save();
-        // return redirect()->route('xx');
+        return redirect()->route('contracts.index');
     }
 
     
@@ -52,10 +47,18 @@ class ContractsController extends Controller
     public function edit($id)
     {
         $contract=Contract::find($id);
+        $relatedProject = $contract->adminProject;
+        $relatedContractor = $contract->contractor;
+        $relatedCustomer = $contract->customer;
         $contractors=Contractor::all();
         $customers=Customer::all();
         $adminProjects=adminProject::all();
-        // return view('xx',compact('contract','contractors','customers','adminProjects'));
+        return view('contrato.editar_contract',compact('contract','contractors','adminProjects','customers','relatedProject','relatedContractor','relatedCustomer'));
+        // $contract=Contract::find($id);
+        // $contractors=Contractor::all();
+        // $customers=Customer::all();
+        // $adminProjects=adminProject::all();
+        // return view('contrato.editar_contract',compact('contract','contractors','adminProjects','customers'));
     }
 
     public function update(Request $request, $id)
@@ -66,7 +69,7 @@ class ContractsController extends Controller
         $contract->dni_admin_proj=$request->dni_admin_proj;
         $contract->nit_customer=$request->nit_customer;
         $contract->save();
-        // return redirect()->route('xx');
+        return redirect()->route('contracts.index');
     }
 
     
@@ -74,6 +77,6 @@ class ContractsController extends Controller
     {
         $contract=Contract::find($id);
         $contract->delete();
-        // return redirect()->route('xx');
+        return redirect()->route('contracts.index');
     }
 }

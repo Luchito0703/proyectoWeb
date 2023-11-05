@@ -3,7 +3,8 @@
   width: auto;
   height: auto;
 }
-/* #datosPersonales{
+
+#datosPersonales{
   display: none;
 }
 
@@ -13,7 +14,12 @@
 
 #equipoCampo{
   display: none;
-} */
+}
+
+#equipoPosesion{
+  display: none;
+} 
+ 
 
 #divFo{
   font-size: small;

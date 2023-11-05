@@ -11,7 +11,7 @@ class ContractorsController extends Controller
     public function index()
     {
         $contractors = contractor::all();
-        return view('contractor.create',compact('contractors'));
+        return view('contractor.gestion_contractor',compact('contractors'));
     }
 
   
@@ -38,7 +38,7 @@ class ContractorsController extends Controller
     public function edit($id)
     {
         $contractors = contractor::find($id);
-        return view('contractors.edit_contractor', compact('contractors'));
+        return view('contractor.editar_contractor', compact('contractors'));
     }
 
   

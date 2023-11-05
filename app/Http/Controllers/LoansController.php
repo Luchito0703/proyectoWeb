@@ -14,7 +14,7 @@ class LoansController extends Controller
         $loans = loan::all();
         $contractors = contractor::all();
         $equipments = equipment::all();
-        return view('loan.create',compact('loans','contractors','equipments'));
+        return view('loan.gestion_loan',compact('loans','contractors','equipments'));
     }
 
    
@@ -42,7 +42,7 @@ class LoansController extends Controller
         $loan = loan::find($id);
         $contractors = contractor::all();
         $equipments = equipment::all();
-        return view('loan.edit_loan',compact('loan','contractors','equipments'));
+        return view('loan.editar_loan',compact('loan','contractors','equipments'));
     }
 
    
@@ -55,7 +55,7 @@ class LoansController extends Controller
         $loan-> date_devolution = $request->date_devolution;
         $loan-> date_loan = $request->date_loan;
         $loan->save();
-        // return redirect()->route('x.index');
+        return redirect()->route('loan.index');
     }
 
    
@@ -63,6 +63,6 @@ class LoansController extends Controller
     {
         $loan = loan::find($id);
         $loan->delete();
-        // return redirect()->route('x.index');
+        return redirect()->route('loan.index');
     }
 }
