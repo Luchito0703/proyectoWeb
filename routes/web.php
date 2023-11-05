@@ -16,6 +16,12 @@ Route::delete("/jefe/{id}",[AdminBossController::class,'destroy'])->name("adminB
 Route::put("/jefe/{id}",[AdminBossController::class,'update'])->name("adminBoss.update");
 Route::get("/jefe_edit/{id}",[AdminBossController::class,'edit'])->name("adminBoss.edit");
 
+Route::get("/equipment",[equipmentsController::class,'index'])->name("equipments.index");
+Route::post("/equipment",[equipmentsController::class,'store'])->name("equipments.store");
+Route::delete("/equipment/{id}",[equipmentsController::class,'destroy'])->name("equipments.destroy");
+Route::put("/equipment/{id}",[equipmentsController::class,'update'])->name("equipments.update");
+Route::get("/equipment_edit/{id}",[equipmentsController::class,'edit'])->name("equipments.edit");
+
 Route::get("/prestamo",[LoansController::class,'index'])->name("loans.index");
 Route::post("/prestamo",[LoansController::class,'store'])->name("loans.store");
 Route::delete("/prestamo/{id}",[LoansController::class,'destroy'])->name("loans.destroy");
@@ -39,3 +45,9 @@ Route::post("/contrato",[ContractsController::class,'store'])->name("contracts.s
 Route::delete("/contrato/{id}",[ContractsController::class,'destroy'])->name("contracts.destroy");
 Route::put("/contrato/{id}",[ContractsController::class,'update'])->name("contracts.update");
 Route::get("/contrato_edit/{id}",[ContractsController::class,'edit'])->name("contracts.edit");
+
+Route::get("/certificado",[CertificatesController::class,'index'])->name("certificates.index");
+Route::post("/certificado",[CertificatesController::class,'store'])->name("certificates.store");
+Route::delete("/certificado/{id}",[CertificatesController::class,'destroy'])->name("certificates.destroy");
+Route::put("/certificado/{id}",[CertificatesController::class,'update'])->name("certificates.update");
+Route::get("/certificado_edit/{id}",[CertificatesController::class,'edit'])->name("certificates.edit");

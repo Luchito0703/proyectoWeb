@@ -9,7 +9,7 @@
     <title>Document</title>
 </head>
 <body>
-    <header class="sticky-top bg-warning py-3">
+    <header class="sticky-top py-3">
         <div class="logo">
             <img id="logo"  src="/img/logo.png" alt="" srcset="">
             <h4 class="font-weight-bold">Más Biomas S.A.S</h4>
