@@ -7,11 +7,6 @@ use App\Models\adminProject;
 
 class AdminProjectsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $adminProjects = adminProject::all();

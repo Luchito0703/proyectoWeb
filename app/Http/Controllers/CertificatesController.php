@@ -25,7 +25,7 @@ class CertificatesController extends Controller
         $rules=[
             'id_certificate' => 'required|numeric',
             'id_contra' => 'required|numeric',
-            'nit_costumer' => 'required|numeric',
+            'nit_customer' => 'required|numeric',
             'id_contract' => 'required|numeric',
             'date_expedition' => 'required|date',
             'issue' => 'required|string'
@@ -49,9 +49,9 @@ class CertificatesController extends Controller
         $this->validate($request, $rules,$messages);
 
         $certificate = new certificate();
-        $certificate->id_certicate = $request->$id_certificate;
+        $certificate->id_certificate = $request->$id_certificate;
         $certificate->id_contra = $request->$id_contra;
-        $certificate->nit_costumer = $request->$nit_costumer;
+        $certificate->nit_customer = $request->$nit_customer;
         $certificate->id_contract = $request->$id_contract;
         $certificate->date_expedition = $request->$date_expedition;
         $certificate->issue = $request->$issue;
@@ -74,9 +74,9 @@ class CertificatesController extends Controller
     public function update(Request $request, $id)
     {
         $certificate = certificate::find($id);
-        $certificate->id_certicate = $request->$id_certificate;
+        $certificate->id_certificate = $request->$id_certificate;
         $certificate->id_contra = $request->$id_contra;
-        $certificate->nit_costumer = $request->$nit_costumer;
+        $certificate->nit_customer = $request->$nit_customer;
         $certificate->id_contract = $request->$id_contract;
         $certificate->date_expedition = $request->$date_expedition;
         $certificate->issue = $request->$issue;

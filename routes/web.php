@@ -10,6 +10,10 @@ use App\Http\Controllers\CustomersController;
 use App\Http\Controllers\EquipmentsController;
 use App\Http\Controllers\LoansController;
 
+Route::get('/', function () {
+    return view('principal_page');
+});
+
 Route::get("/jefe",[AdminBossController::class,'index'])->name("adminBoss.index");
 Route::post("/jefe",[AdminBossController::class,'store'])->name("adminBoss.store");
 Route::delete("/jefe/{id}",[AdminBossController::class,'destroy'])->name("adminBoss.destroy");
@@ -39,7 +43,6 @@ Route::post("/proj",[AdminProjectsController::class,'store'])->name("adminProjec
 Route::delete("/proj/{id}",[AdminProjectsController::class,'destroy'])->name("adminProjects.destroy");
 Route::put("/proj/{id}",[AdminProjectsController::class,'update'])->name("adminProjects.update");
 Route::get("/proj_edit/{id}",[AdminProjectsController::class,'edit'])->name("adminProjects.edit");
-
 
 Route::get("/contrato",[ContractsController::class,'index'])->name("contracts.index");
 Route::post("/contrato",[ContractsController::class,'store'])->name("contracts.store");

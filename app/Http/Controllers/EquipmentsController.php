@@ -11,16 +11,31 @@ class EquipmentsController extends Controller
     public function index()
     {
         $equipments = equipment::all();
-        // return('x.index');
+        return view('equipment.gestion_equipments',compact("equipments"));
     }
 
     public function store(Request $request)
     {
+        $rules=[
+            'id_equipment' => 'required|string',
+            'name_equipment' => 'required|string',
+        ];
+
+        $messages=[
+            'id_equipment.required' => 'El campo dni del cliente es obligatorio.',
+            'id_equipment.string' => 'El campo dni del cliente debe ser valido.',
+            'name_equipment.required' => 'El campo nombre del cliente es obligatorio.',
+            'name_equipment.string' => 'El campo nombre del cliente debe ser cadena de texto.',
+            
+        ];
+
+        $this->validate($request, $rules,$messages);
+
         $equipment = new equipment();
-        $equipment-> id_equipment= $required->id_equipment;
-        $equipment->name_equipment=$required->name_equipment;
+        $equipment-> id_equipment= $request->id_equipment;
+        $equipment->name_equipment=$request->name_equipment;
         $equipment->save();
-        // return redirect()->route('x.index');
+        return redirect()->route('equipments.index');
     }
 
     public function show($id)
@@ -31,18 +46,18 @@ class EquipmentsController extends Controller
 
     public function edit($id)
     {
-        $equipment = equipment::find($id);
-        // return view('x.edit_equipment',compact('equipment'));
+        $equipments = equipment::find($id);
+        return view('equipment.editar_equipments',compact("equipments"));
     }
 
    
     public function update(Request $request, $id)
     {
         $equipment = equipment::find($id);
-        $equipment-> id_equipment= $required->id_equipment;
-        $equipment->name_equipment=$required->name_equipment;
+        $equipment-> id_equipment= $request->id_equipment;
+        $equipment->name_equipment=$request->name_equipment;
         $equipment->save();
-        // return redirect()->route('x.index');
+        return redirect()->route('equipments.index');
     }
 
  
@@ -50,6 +65,6 @@ class EquipmentsController extends Controller
     {
         $equipment = equipment::find($id);
         $equipment->delete();
-        // return redirect()->route('x.index');
+        return redirect()->route('equipments.index');;
     }
 }

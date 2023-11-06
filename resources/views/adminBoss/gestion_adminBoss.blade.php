@@ -3,11 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <link href="/css/admins.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="/js/tu_archivo.js"></script>
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <title>MasBiomas S.A.S</title>
 </head>
 <body>
     <header class="sticky-top py-3">
@@ -85,7 +87,7 @@
                 </div>
             </div>
             <div class="col">
-                <div class="container pt-5 container text-center">
+                <div class="container pt-3 container text-center">
                     <div>
                         <h2>Crear nuevo Boss</h2>  
                         @if ($errors->any())
@@ -97,34 +99,35 @@
                             @csrf
                             <div class="form-group">
                                 <label for="dni">Cedula:</label>
-                                <input type="text" class="form-control" id="dni" name="dni">
+                                <input type="text" class="form-control text-center" id="dni" name="dni">
                             </div>
 
                             <div class="form-group">
                                 <label for="nombre">Nombre:</label>
-                                <input type="text" class="form-control" id="nombre" name="name">
+                                <input type="text" class="form-control text-center" id="nombre" name="name">
                             </div>
 
                             <div class="form-group">
                                 <label for="telefono">Teléfono:</label>
-                                <input type="text" class="form-control" id="telefono" name="number_phone">
+                                <input type="text" class="form-control text-center" id="telefono" name="number_phone">
                             </div>
 
                             <div class="form-group">
                                 <label for="direccion">Dirección:</label>
-                                <input type="text" class="form-control" id="direccion" name="address">
+                                <input type="text" class="form-control text-center" id="direccion" name="address">
                             </div>
+
                             <div class="form-group">
                                 <label for="email">Email:</label>
-                                <input type="email" class="form-control" id="email" name="email">
+                                <input type="email" class="form-control text-center" id="email" name="email">
                             </div>
-                            
+
                             <button type="submit" class="btn btn-success">Guardar</button>
                         </form>
                     </div>
                 </div>
                 <div class="container pt-5 text-center">
-                    <table class="table table-striped-columns">
+                    <table class="table table-striped">
                         <thead>
                             <tr>
                                 <th scope="col">Cedula del administrador jefe</th>
@@ -180,6 +183,5 @@
         </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-
 </body>
 </html>
