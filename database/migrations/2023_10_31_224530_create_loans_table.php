@@ -14,13 +14,14 @@ class CreateLoansTable extends Migration
     public function up()
     {
         Schema::create('loans', function (Blueprint $table) {
-            $table->id()->comment("Identificador del Prestamo");
-            $table->unsignedBigInteger("id_contra")->comment("Id del Contratista");
-            $table->foreign("id_contra")->references("id")->on("contractors");
-            $table->unsignedBigInteger("id_team")->comment("Id del Equipo de Campo");
-            $table->foreign("id_team")->references("id")->on("equipment");
-            $table->date("date_dev")->comment("Fecha de Devolución");
-            $table->date("date_prest")->comment("Fecha de Prestamo");
+            $table->id();
+            $table->string("id_prest")->comment("Id del prestamo");
+            $table->unsignedBigInteger("id_contractor")->comment("Id del Contratista");
+            $table->foreign("id_contractor")->references("id")->on("contractors");
+            $table->unsignedBigInteger("id_equipment")->comment("Id del Equipo de Campo");
+            $table->foreign("id_equipment")->references("id")->on("equipment");
+            $table->date("date_devolution")->comment("Fecha de Devolución");
+            $table->date("date_loan")->comment("Fecha de Prestamo");
             $table->timestamps();
         });
     }

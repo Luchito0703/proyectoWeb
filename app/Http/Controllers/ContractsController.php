@@ -3,82 +3,80 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\contract;
+use App\Models\customer;
+use App\Models\contractor;
+use App\Models\adminProject;
 
 class ContractsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
-        //
+        $contracts = contract::all();
+        $contractors = contractor::all();
+        $adminProjects = adminProject::all();
+        $customers = customer::all();
+        return view('contrato.gestion_contract',compact('contracts','contractors','adminProjects','customers'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
-        //
+        $contract=new Contract();
+        $contract->id_contract=$request->id_contract;
+        $contract->id_contra=$request->id_contra;
+        $contract->dni_admin_proj=$request->dni_admin_proj;
+        $contract->nit_customer=$request->nit_customer;
+        $contract->save();
+        return redirect()->route('contracts.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+   
     public function edit($id)
     {
-        //
+        $contract=Contract::find($id);
+        $relatedProject = $contract->adminProject;
+        $relatedContractor = $contract->contractor;
+        $relatedCustomer = $contract->customer;
+        $contractors=Contractor::all();
+        $customers=Customer::all();
+        $adminProjects=adminProject::all();
+        return view('contrato.editar_contract',compact('contract','contractors','adminProjects','customers','relatedProject','relatedContractor','relatedCustomer'));
+        // $contract=Contract::find($id);
+        // $contractors=Contractor::all();
+        // $customers=Customer::all();
+        // $adminProjects=adminProject::all();
+        // return view('contrato.editar_contract',compact('contract','contractors','adminProjects','customers'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
-        //
+        $contract=Contract::find($id);
+        $contract->id_contract=$request->id_contract;
+        $contract->id_contra=$request->id_contra;
+        $contract->dni_admin_proj=$request->dni_admin_proj;
+        $contract->nit_customer=$request->nit_customer;
+        $contract->save();
+        return redirect()->route('contracts.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function destroy($id)
     {
-        //
+        $contract=Contract::find($id);
+        $contract->delete();
+        return redirect()->route('contracts.index');
     }
 }

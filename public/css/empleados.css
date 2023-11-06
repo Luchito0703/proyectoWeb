@@ -1,0 +1,94 @@
+#empcentro{
+  margin-top: 70px;
+  width: auto;
+  height: auto;
+}
+
+#datosPersonales{
+  display: none;
+}
+
+#contratos{
+  display: none;
+}
+
+#equipoCampo{
+  display: none;
+}
+
+#equipoPosesion{
+  display: none;
+} 
+ 
+
+#divFo{
+  font-size: small;
+  text-align: center;
+}
+footer {
+  position: fixed;
+  bottom: 0;
+  background-color: rgb(158, 234, 234);
+  right: 0;
+  left: 0;
+}
+
+#iconosFo{
+  font-size: 20px;
+}
+
+body{
+  font-family: sans-serif;
+  margin: 0;
+}
+  
+#logo{
+  width: 150px;
+} 
+  
+#divFo{
+  font-size: small;
+  text-align: center;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  background-color: #F29727;
+  right: 0;
+  left: 0;
+}
+  
+.container img{
+  width: 500px;
+  height: 600px;
+}
+  
+body{
+  font-family: sans-serif;
+  margin: 0;
+}
+  
+header{
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  height: 70px;
+  width: 100%;
+  align-items: center;
+  padding: 10px;
+  background-color: #F29727;
+
+}
+  
+.logo{
+  display: flex;
+  height: 80px;
+  align-items: center;
+}
+  
+#columenu{
+  background-color: #f08f1a;
+}
+  
+  

@@ -3,82 +3,78 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\adminProject;
 
 class AdminProjectsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+        $adminProjects = adminProject::all();
+        return view('adminProject.gestion_adminProjects',compact("adminProjects"));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $rules=[
+            'dni' => 'required|numeric',
+            'name' => 'required|string',
+            'number_phone' => 'required|numeric',
+            'address' => 'required|string',
+            'email' => 'required|email'
+        ];
+
+        $messages=[
+            'dni.required' => 'El campo DNI es obligatorio.',
+            'dni.numeric' => 'El campo DNI debe ser numérico.',
+            'name.required' => 'El campo Nombre es obligatorio.',
+            'name.string' => 'El campo Nombre debe ser una cadena de texto.',
+            'number_phone.required' => 'El campo Número de teléfono es obligatorio.',
+            'number_phone.numeric' => 'El campo Número de teléfono debe ser numérico.',
+            'address.required' => 'El campo Dirección es obligatorio.',
+            'address.string' => 'El campo Dirección debe ser una cadena de texto.',
+            'email.required' => 'El campo Correo Electrónico es obligatorio.',
+            'email.email' => 'El campo Correo Electrónico debe ser una dirección de correo electrónico válida.'
+        ];
+
+        $this->validate($request, $rules,$messages);
+
+        $adminProject = new adminProject();
+        $adminProject->dni = $request->dni;
+        $adminProject->name = $request->name;
+        $adminProject->number_phone = $request->number_phone;
+        $adminProject->address = $request->address;
+        $adminProject->email = $request->email;
+        $adminProject->save();
+        return redirect()->route('adminProjects.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
-        //
+        $adminProject = adminProject::find($id);
+        return view('adminProject.editar_adminProject',compact('adminProject'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
-        //
+        $adminProject = adminProject::find($id);
+        $adminProject->dni = $request->dni;
+        $adminProject->name = $request->name;
+        $adminProject->number_phone = $request->number_phone;
+        $adminProject->address = $request->address;
+        $adminProject->email = $request->email;
+        $adminProject->save();
+        return redirect()->route('adminProjects.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
-        //
+        $adminProject = adminProject::find($id);
+        $adminProject->delete();
+        return redirect()->route('adminProjects.index');
     }
 }

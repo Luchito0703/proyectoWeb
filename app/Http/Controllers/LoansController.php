@@ -3,82 +3,66 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\contractor;
+use App\Models\loan;
+use App\Models\equipment;
 
 class LoansController extends Controller
-{
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+{    
     public function index()
     {
-        //
+        $contractors = contractor::all();
+        $loans = loan::all();
+        $equipments = equipment::all();
+        return view('loan.gestion_loan',compact('loans','contractors','equipments'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+   
     public function store(Request $request)
     {
-        //
+        // dd($request->all());
+        $loan = new loan();
+        $loan-> id_prest = $request->id_prest;
+        $loan-> id_contractor = $request->id_contractor;
+        $loan-> id_equipment = $request->id_equipment;
+        $loan-> date_devolution = $request->date_devolution;
+        $loan-> date_loan = $request->date_loan;
+        $loan->save();
+        return redirect()->route('loan.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
-        //
+        $loan = loan::find($id);
+        $contractors = contractor::all();
+        $equipments = equipment::all();
+        return view('loan.editar_loan',compact('loan','contractors','equipments'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+   
     public function update(Request $request, $id)
     {
-        //
+        $loan = loan::find($id);
+        $loan-> id_prest = $request->id_prest;
+        $loan-> id_contractor = $request->id_contractor;
+        $loan-> id_equipment = $request->id_equipment;
+        $loan-> date_devolution = $request->date_devolution;
+        $loan-> date_loan = $request->date_loan;
+        $loan->save();
+        return redirect()->route('loan.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+   
     public function destroy($id)
     {
-        //
+        $loan = loan::find($id);
+        $loan->delete();
+        return redirect()->route('loan.index');
     }
 }
