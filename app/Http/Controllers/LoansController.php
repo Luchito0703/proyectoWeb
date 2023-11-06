@@ -3,16 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\loan;
 use App\Models\contractor;
+use App\Models\loan;
 use App\Models\equipment;
 
 class LoansController extends Controller
 {    
     public function index()
     {
-        $loans = loan::all();
         $contractors = contractor::all();
+        $loans = loan::all();
         $equipments = equipment::all();
         return view('loan.gestion_loan',compact('loans','contractors','equipments'));
     }

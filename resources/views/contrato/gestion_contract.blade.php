@@ -105,7 +105,7 @@
                 <select name="dni_admin_proj" id="cedula">
                     <option>Seleccione un administrador de proyecto</option>
                     @foreach ($adminProjects as $adminProject)
-                        <option value="{{ $adminProject->id }}">{{ $adminProject->name }}</option>
+                        <option value="{{ $adminProject->id }}">{{ $adminProject->dni }}</option>
                     @endforeach
                 </select>
 
@@ -138,6 +138,7 @@
                             <td>{{ $contract->contractor ? $contract->contractor->id_contractor : 'N/A' }}</td> 
                             <td>{{ $contract->adminProject ? $contract->adminProject->dni : 'N/A' }}</td>
                             <td>{{ $contract->customer ? $contract->customer->nit_customer : 'N/A' }}</td>
+                            <td>
                                 <a href="{{ route('contracts.edit', $contract->id) }}">Editar</a>
                                 <form action="{{ route('contracts.destroy', $contract->id) }}" method="post">
                                     @csrf

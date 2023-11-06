@@ -8,11 +8,6 @@
 <body>
     <div>
         <div>
-            @if ($errors->any())
-	            @foreach ($errors->all() as $error)
-		            <div class="alert alert-danger" role="alert">{{$error}}</div>
-	            @endforeach
-            @endif
             <form action="{{route('equipments.store')}}" method="post">
                 @csrf
                 <label for="id">Ingrese referencia del equipo</label>
@@ -49,6 +44,5 @@
             </table>
         </div>
     </div>
-    
 </body>
 </html>

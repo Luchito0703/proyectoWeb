@@ -16,30 +16,37 @@
             <form action="{{ route('certificates.store') }}" method="POST">
                 @csrf
                 <label for="idCertificado">Ingresar Id del certificado</label>
-                <input type="text" name="id_certificate" id="idCertificado" required>
-                <label for="idContratista">Ingrese el contratista asociado al contrato: </label>
-                <select name="id_contra" id="idContra" required>
+                <input type="text" name="id_certificate" id="idCertificado" placeholder="Ingrese el identificador" required>
+
+                <label for="idContratista">Seleccione el contratista asociado al contrato: </label>
+                <select name="id_contra" id="idContratista" required>
                     <option>Seleccione un contratista</option>
                     @foreach ($contractors as $contractor)
                         <option value="{{$contractor->id}}">{{$contractor->name_contractor}}</option>
                     @endforeach
                 </select>
+
+                <label for="nitCustomer">Seleccion el nit del cliente asociado al certificado</label>
                 <select name="nit_customer" id="nitCustomer" required>
-                    <option>Seleccione el cliente al que esta asociado el certificado: </option>
+                    <option>Seleccione el cliente</option>
                     @foreach ($customers as $customer)
-                        <option value="{{$customer->id}}">{{$customer->name_customer}}</option>
+                        <option value="{{$customer->id}}">{{$customer->id}}</option>
                     @endforeach
                 </select>
+
+                <label for="idContract">Seleccione el contrato asociado al certificado</label>
                 <select name="id_contract" id="idContract" required>
-                    <option>Seleccione el cliente al que esta asociado el certificado: </option>
+                    <option>Seleccione el contratista</option>
                     @foreach ($contracts as $contract)
                         <option value="{{$contract->id}}">{{$contract->id_contract}}</option>
                     @endforeach
                 </select>
+
                 <label for="dateExp">Ingrese fecha de expedicion</label>
                 <input type="date" name="date_expedition" id="dateExp" required>
-                <label for="tema">Ingrese tema del certificado a generar</label>
-                <input type="date" name="issue" id="tema" required>
+
+                <label for="tema" >Ingrese tema del certificado a generar</label>
+                <input type="text" name="issue" id="tema" placeholder="Ingrese el tema" required>
                 <button type="submit">Generar certificado</button>
             </form>
         </div>

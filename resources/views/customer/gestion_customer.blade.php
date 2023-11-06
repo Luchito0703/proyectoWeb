@@ -4,13 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="/css/admins.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/css/p.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 <body>
     <header class="sticky-top py-3">
             <div class="logo">
-                <img id="logo"  src="/imgs/logo.png" alt="" srcset="">
+                <img id="logo"  src="/img/logo.png" alt="" srcset="">
                 <h4>Más Biomas S.A.S</h4>
             </div>
             <div class="dropdown">
@@ -60,32 +63,37 @@
                 </div>
             </div>
             <div class="col">
-                <div class="text-center">
+                <div class="container pt-3 container text-center">
                     <h2>Crear nuevo Usuario</h2>
                     <form action="{{ route('customer.store')}}" method="post">
                         @csrf
+
+                        <label for="nit">Nit de la empresa</label><br>
+                        <input class="form-control text-center" type="number" name="nit_customer" id="nit" required><br>
+
                         <label for="dni_customer">Cédula</label><br>
-                        <input type="text" id="dni_customer" name="dni_customer"><br>
+                        <input class="form-control text-center" type="text" id="dni_customer" name="dni_customer" required><br>
 
                         <label for="name_customer">Nombre</label><br>
-                        <input type="text" id="name_customer" name="name_customer"><br>
+                        <input class="form-control text-center" type="text" id="name_customer" name="name_customer" required><br>
 
                         <label for="number_customer">Telefono</label><br>
-                        <input type="text" id="number_customer" name="number_customer"><br>
+                        <input class="form-control text-center" type="text" id="number_customer" name="number_customer" required><br>
 
                         <label for="address_customer">Direccion</label><br>
-                        <input type="text" id="address_customer" name="address_customer"><br>
+                        <input class="form-control text-center" type="text" id="address_customer" name="address_customer" required><br>
 
                         <label for="email_customer">Email</label><br>
-                        <input type="email" id="email_customer" name="email_customer"><br>
+                        <input class="form-control text-center" type="email" id="email_customer" name="email_customer" required><br>
 
                         <button type="submit" class="btn btn-success">Enviar</button>
                     </form>
                 </div>
                 <div class="text-center">
-                    <table class="table">
+                    <table class="table table-margin-bottom">
                         <thead>
                             <tr>
+                                <th scope="col">nit del Cliente</th>
                                 <th scope="col">Cédula del Cliente</th>
                                 <th scope="col">Nombre del Cliente</th>
                                 <th scope="col">Número del Cliente</th>
@@ -96,6 +104,7 @@
                         <tbody>
                             @foreach($customers as $customer)
                                 <tr class="container text-center">
+                                    <td class="text-center align-middle">{{$customer->nit_customer}}</td>
                                     <td class="text-center align-middle">{{$customer->dni_customer}}</td>
                                     <td class="text-center align-middle">{{$customer->name_customer}}</td>
                                     <td class="text-center align-middle">{{$customer->number_customer}}</td>
