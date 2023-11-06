@@ -84,7 +84,7 @@
                 </div>
             </div>
             <div class="col">
-                <div class="container pt-5 container text-center">
+                <div class="container pt-3 container text-center">
                     <div>
                         <h2>Crear nuevo administrador de Proyectos</h2>
                             @if ($errors->any())
@@ -94,22 +94,32 @@
                             @endif
                         <form action="{{ route('adminProjects.store') }}" method="post">
                             @csrf
-                            <label for="identificador">Ingrese su numero de cedula</label>
-                            <input type="text" name="dni" id="identificador">
+                            <div class="form-group">
+                                <label for="identificador">Ingrese su numero de cedula</label>
+                                <input type="text" name="dni" id="identificador">
+                            </div>
 
-                            <label for="nombre">Ingrese su nombre</label>
-                            <input type="text" name="name">
+                            <div class="form-group">
+                                <label for="nombre">Ingrese su nombre</label>
+                                <input type="text" name="name">
+                            </div>
 
-                            <label for="telefono">Ingrese su numero de telefono</label>
-                            <input type="text" name="number_phone" id="telefono">
+                            <div class="form-group">
+                                <label for="telefono">Ingrese su numero de telefono</label>
+                                <input type="text" name="number_phone" id="telefono" >
+                            </div>
 
-                            <label for="direccion">Ingrese su direccion</label>
-                            <input type="text" name="address" id="direccion">
+                            <div class="form-group">
+                                <label for="direccion">Ingrese su direccion</label>
+                                <input type="text" name="address" id="direccion" >
+                            </div>
 
-                            <label for="email">Ingrese su email</label>
-                            <input type="text" name="email" id="email">
+                            <div class="form-group">
+                                <label for="email">Ingrese su email</label>
+                                <input type="text" name="email" id="email" >
+                            </div>
 
-                            <button type="submit">Enviar</button>
+                            <button type="submit" class="btn btn-success">Enviar</button>
                         </form>
                     </div>
                 </div>
@@ -127,17 +137,17 @@
                         <tbody>
                             @foreach ($adminProjects as $adminProject)
                                 <tr class="container text-center">
-                                    <td class="container text-center">{{$adminProject->dni}}</td>
-                                    <td class="container text-center">{{$adminProject->name}}</td>
-                                    <td class="container text-center">{{$adminProject->number_phone}}</td>
-                                    <td class="container text-center">{{$adminProject->address}}</td>
-                                    <td class="container text-center">{{$adminProject->email}}</td>
-                                    <td class="container text-center">
-                                        <a href="{{ route('adminProjects.edit', $adminProject->id) }}">Editar</a>
+                                    <td class="container text-center align-middle">{{$adminProject->dni}}</td>
+                                    <td class="container text-center align-middle">{{$adminProject->name}}</td>
+                                    <td class="container text-center align-middle">{{$adminProject->number_phone}}</td>
+                                    <td class="container text-center align-middle">{{$adminProject->address}}</td>
+                                    <td class="container text-center align-middle">{{$adminProject->email}}</td>
+                                    <td class="container text-center align-middle">
+                                        <a href="{{ route('adminProjects.edit', $adminProject->id) }}" class="btn btn-primary">Editar</a>
                                         <form action="{{ route('adminProjects.destroy', $adminProject->id) }}" method="post">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit">Eliminar</button>
+                                            <button type="submit" class="btn btn-danger mt-3">Eliminar</button>
                                         </form>
                                     </td>
                                 </tr>
