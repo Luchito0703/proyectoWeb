@@ -1,84 +1,70 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\equipment;
 
 use Illuminate\Http\Request;
 
 class EquipmentsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function index()
     {
-        //
+        $equipments = equipment::all();
+        return view('equipment.gestion_equipments',compact("equipments"));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $rules=[
+            'id_equipment' => 'required|string',
+            'name_equipment' => 'required|string',
+        ];
+
+        $messages=[
+            'id_equipment.required' => 'El campo dni del cliente es obligatorio.',
+            'id_equipment.string' => 'El campo dni del cliente debe ser valido.',
+            'name_equipment.required' => 'El campo nombre del cliente es obligatorio.',
+            'name_equipment.string' => 'El campo nombre del cliente debe ser cadena de texto.',
+            
+        ];
+
+        $this->validate($request, $rules,$messages);
+
+        $equipment = new equipment();
+        $equipment-> id_equipment= $request->id_equipment;
+        $equipment->name_equipment=$request->name_equipment;
+        $equipment->save();
+        return redirect()->route('equipments.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit($id)
     {
-        //
+        $equipments = equipment::find($id);
+        return view('equipment.editar_equipments',compact("equipments"));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+   
     public function update(Request $request, $id)
     {
-        //
+        $equipment = equipment::find($id);
+        $equipment-> id_equipment= $request->id_equipment;
+        $equipment->name_equipment=$request->name_equipment;
+        $equipment->save();
+        return redirect()->route('equipments.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+ 
     public function destroy($id)
     {
-        //
+        $equipment = equipment::find($id);
+        $equipment->delete();
+        return redirect()->route('equipments.index');;
     }
 }
