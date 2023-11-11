@@ -75,12 +75,12 @@
                             @csrf
                             <div class="form-group">
                                 <label for="idCertificado">Ingresar Id del certificado</label>
-                                <input type="text" name="id_certificate" id="idCertificado" placeholder="Ingrese el identificador" >
+                                <input type="text" class="form-control text-center" name="id_certificate" id="idCertificado" placeholder="Ingrese el identificador" >
                             </div>
 
                             <div class="form-group mt-3">
                                 <label for="idContratista">Seleccione el contratista asociado al contrato: </label>
-                                <select name="id_contra" id="idContratista" >
+                                <select name="id_contra" id="idContratista" class="form-control text-center">
                                     <option>Seleccione un contratista</option>
                                     @foreach ($contractors as $contractor)
                                         <option value="{{$contractor->id}}">{{$contractor->name_contractor}}</option>
@@ -90,7 +90,7 @@
 
                             <div class="form-group mt-3">
                                 <label for="nitCustomer">Seleccion el nit del cliente asociado al certificado</label>
-                                <select name="nit_customer" id="nitCustomer" >
+                                <select name="nit_customer" id="nitCustomer" class="form-control text-center" >
                                     <option>Seleccione el cliente</option>
                                     @foreach ($customers as $customer)
                                         <option value="{{$customer->id}}">{{$customer->id}}</option>
@@ -100,7 +100,7 @@
 
                             <div class="form-group mt-3">
                                 <label for="idContract">Seleccione el contrato asociado al certificado</label>
-                                <select name="id_contract" id="idContract" >
+                                <select name="id_contract" id="idContract" class="form-control text-center">
                                     <option>Seleccione el contratista</option>
                                     @foreach ($contracts as $contract)
                                         <option value="{{$contract->id}}">{{$contract->id_contract}}</option>
@@ -110,12 +110,12 @@
 
                             <div class="form-group mt-3">
                                 <label for="tema" >Ingrese tema del certificado a generar</label>
-                                <input type="text" name="issue" id="tema" placeholder="Ingrese el tema">
+                                <input type="text" class="form-control text-center" name="issue" id="tema" placeholder="Ingrese el tema">
                             </div>
                             
                             <div class="form-group mt-3">
                                 <label for="dateExp">Ingrese fecha de expedicion</label>
-                                <input type="date" name="date_expedition" id="dateExp" >
+                                <input type="date" class="form-control text-center" name="date_expedition" id="dateExp" >
                             </div>
 
                             <button type="submit" class="btn btn-success mt-3">Generar certificado</button>

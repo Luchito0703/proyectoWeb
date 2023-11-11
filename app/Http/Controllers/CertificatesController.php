@@ -49,12 +49,12 @@ class CertificatesController extends Controller
         $this->validate($request, $rules,$messages);
 
         $certificate = new certificate();
-        $certificate->id_certificate = $request->$id_certificate;
-        $certificate->id_contra = $request->$id_contra;
-        $certificate->nit_customer = $request->$nit_customer;
-        $certificate->id_contract = $request->$id_contract;
-        $certificate->date_expedition = $request->$date_expedition;
-        $certificate->issue = $request->$issue;
+        $certificate->id_certificate = $request->id_certificate;
+        $certificate->id_contra = $request->id_contra;
+        $certificate->nit_customer = $request->nit_customer;
+        $certificate->id_contract = $request->id_contract;
+        $certificate->date_expedition = $request->date_expedition;
+        $certificate->issue = $request->issue;
         $certificate->save();
         return redirect()->route('certificates.index');
 
@@ -74,12 +74,12 @@ class CertificatesController extends Controller
     public function update(Request $request, $id)
     {
         $certificate = certificate::find($id);
-        $certificate->id_certificate = $request->$id_certificate;
-        $certificate->id_contra = $request->$id_contra;
-        $certificate->nit_customer = $request->$nit_customer;
-        $certificate->id_contract = $request->$id_contract;
-        $certificate->date_expedition = $request->$date_expedition;
-        $certificate->issue = $request->$issue;
+        $certificate->id_certificate = $request->id_certificate;
+        $certificate->id_contra = $request->id_contra;
+        $certificate->nit_customer = $request->nit_customer;
+        $certificate->id_contract = $request->id_contract;
+        $certificate->date_expedition = $request->date_expedition;
+        $certificate->issue = $request->issue;
         return redirect()->route('certificates.index');    
     }
 
