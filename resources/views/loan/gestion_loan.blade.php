@@ -72,12 +72,12 @@
 		            <div class="alert alert-danger" role="alert">{{$error}}</div>
 	            @endforeach
             @endif
-            <form action="{{ route ('loans.store') }}" method="POST">
+            <form action="{{ route('loans.store') }}" method="POST">
                 @csrf
-                <label for="prestamo">Identificador del prestamo</label>
+                <label for="prestamo">Identificador del préstamo</label>
                 <input type="number" id="prestamo" name="id_prest" required><br>
-                <label for="contratista">Identificacion del contratista</label>
-                <select name="id_equipment" id="equipo" required>
+                <label for="contratista">Identificación del contratista</label>
+                <select name="id_contractor" id="contratista" required> 
                     <option value="0">Seleccione el contratista</option>
                     @foreach ($contractors as $contra)
                         <option value="{{$contra->id}}">{{$contra->name_contractor}}</option>
@@ -89,23 +89,24 @@
                     @foreach ($equipments as $equipment)
                         <option value="{{$equipment->id}}">{{$equipment->name_equipment}}</option>
                     @endforeach
-                </select>
-                <label for="devolucion">Fecha de devolucion</label>
-                <input type="date" name="date_devolution" id="devolucion" required>
-                <label for="prestacion">Fecha de prestamo</label>
+                </select><br>
+                <label for="prestacion">Fecha de préstamo</label>
                 <input type="date" name="date_loan" id="prestacion" required>
+                <label for="devolucion">Fecha de devolución</label>
+                <input type="date" name="date_devolution" id="devolucion" required>
                 <button type="submit" class="btn btn-success">Enviar solicitud</button>
             </form>
+
         </div>
         <div>
-            <table>
+            <table class="table">
                 <thead>
                     <tr>
                         <th> Identificador del prestamo</th>
                         <th> Identificador del contratista</th>
                         <th> Identificador del equipo</th>
-                        <th> Fecha de devolucion</th>
                         <th> Fecha de prestamo</th>
+                        <th> Fecha de devolucion</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -114,8 +115,8 @@
                             <td>{{$loan->id_prest}}</td>
                             <td>{{$loan->id_contractor}}</td>
                             <td>{{$loan->id_equipment}}</td>
-                            <td>{{$loan->date_devolution}}</td>
                             <td>{{$loan->date_loan}}</td>
+                            <td>{{$loan->date_devolution}}</td>
                             <td>
                                 <a href="{{ route('loans.edit',$loan->id) }}" >Editar</a>
                                 <form action="{{ route('loans.destroy', $loan->id) }}" method="post">

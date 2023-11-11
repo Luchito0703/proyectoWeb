@@ -9,4 +9,8 @@ class contractor extends Model
 {
     use HasFactory;
     
+    public function contractors()
+    {
+        return $this->belongsTo(contract::class);
+    }
 }

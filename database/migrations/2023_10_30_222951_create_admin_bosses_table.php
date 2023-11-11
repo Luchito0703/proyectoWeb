@@ -14,7 +14,7 @@ class CreateAdminBossesTable extends Migration
     public function up()
     {
         Schema::create('admin_bosses', function (Blueprint $table) {
-            $table->id("id")->comment("Id del jefe");
+            $table->id()->comment("Id del jefe");
             $table->string("dni")->comment("Cedula del jefe");
             $table->string("name")->comment("Nombre del jefe");
             $table->string("number_phone")->comment("Numero del jefe");
