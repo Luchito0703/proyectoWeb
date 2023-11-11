@@ -115,9 +115,9 @@
                             <thead>
                                 <tr>
                                     <th scope="col">Identificador del contrato</th>
-                                    <th scope="col">Nombre del contratista</th>
-                                    <th scope="col">Nombre del administrador del proyecto</th>
-                                    <th scope="col">Nombre de la empresa</th>
+                                    <th scope="col">Identificador del contratista</th>
+                                    <th scope="col">Identificador del administrador del proyecto</th>
+                                    <th scope="col">Identificador de la empresa</th>
                                     <th scope="col">Acciones</th>
                                 </tr>
                             </thead>
@@ -125,9 +125,9 @@
                                 @foreach($contracts as $contract)
                                     <tr class="container text-center">
                                         <td class="text-center align-middle">{{ $contract->id_contract }}</td>
-                                        <td class="text-center align-middle">{{ $contract->contractor ? $contract->contractor->name_contractor : 'N/A' }}</td> 
-                                        <td class="text-center align-middle">{{ $contract->adminProject ? $contract->adminProject->dni : 'N/A' }}</td>
-                                        <td class="text-center align-middle">{{ $contract->customer ? $contract->customer->name_customer : 'N/A' }}</td>
+                                        <td class="text-center align-middle">{{ $contract->id_contra}}</td> 
+                                        <td class="text-center align-middle">{{ $contract->dni_admin_proj}}</td>
+                                        <td class="text-center align-middle">{{ $contract->nit_customer}}</td>
                                         <td class="text-center align-middle">
                                             <a href="{{ route('contracts.edit', $contract->id) }}" class="btn btn-primary">Editar</a>
                                             <form action="{{ route('contracts.destroy', $contract->id) }}" method="post" class="mt-2">

@@ -77,27 +77,6 @@
                 @csrf
                 <label for="prestamo">Identificador del préstamo</label>
                 <input type="number" class="form-control text-center" id="prestamo" name="id_prest" placeholder="Identificador del prestamo">
-                
-                <label for="contratista">Identificación del contratista</label>
-                <select name="id_contractor" id="contratista" required> 
-                    <option value="0">Seleccione el contratista</option>
-                    @foreach ($contractors as $contra)
-                        <option value="{{$contra->id}}">{{$contra->name_contractor}}</option>
-                    @endforeach
-                </select>
-                <label for="equipo">Seleccione el equipo</label>
-                <select name="id_equipment" id="equipo" required>
-                    <option value="0">Seleccione el equipo necesario</option>
-                    @foreach ($equipments as $equipment)
-                        <option value="{{$equipment->id}}">{{$equipment->name_equipment}}</option>
-                    @endforeach
-                </select><br>
-                <label for="prestacion">Fecha de préstamo</label>
-                <input type="date" name="date_loan" id="prestacion" required>
-                <label for="devolucion">Fecha de devolución</label>
-                <input type="date" name="date_devolution" id="devolucion" required>
-                <button type="submit" class="btn btn-success">Enviar solicitud</button>
-            </form>
 
                         <div class="form-group">
                             <label for="contratista" class="mt-2">Identificación del contratista</label>
