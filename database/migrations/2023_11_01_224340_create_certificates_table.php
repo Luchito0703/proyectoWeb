@@ -15,7 +15,7 @@ class CreateCertificatesTable extends Migration
     {
         Schema::create('certificates', function (Blueprint $table) {
             $table->id();
-            $table->string("id_certificate")->comment("ID del dertificado");
+            $table->string("id_certificate")->comment("ID del certificado");
             $table->unsignedBigInteger("id_contra")->comment("ID del contratista");
             $table->foreign("id_contra")->references("id")->on("contractors");
             $table->unsignedBigInteger("nit_customer")->comment("Nit de la empresa usuario");

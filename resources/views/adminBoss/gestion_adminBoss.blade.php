@@ -89,7 +89,7 @@
             <div class="col">
                 <div class="container pt-3 container text-center">
                     <div>
-                        <h2>Crear nuevo Boss</h2>  
+                        <h2>Crear nuevo administrador jefe</h2>  
                         @if ($errors->any())
 	                        @foreach ($errors->all() as $error)
 		                        <div class="alert alert-danger" role="alert">{{$error}}</div>

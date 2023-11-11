@@ -64,72 +64,86 @@
             </div>
             <div class="col">
                 <div class="container pt-3 container text-center">
-                <div>
-            @if ($errors->any())
-	            @foreach ($errors->all() as $error)
-		            <div class="alert alert-danger" role="alert">{{$error}}</div>
-	            @endforeach
-            @endif
-            <form action="{{ route('certificates.store') }}" method="POST">
-                @csrf
-                <label for="idCertificado">Ingresar Id del certificado</label>
-                <input type="text" name="id_certificate" id="idCertificado" placeholder="Ingrese el identificador" required>
-
-                <label for="idContratista">Seleccione el contratista asociado al contrato: </label>
-                <select name="id_contra" id="idContratista" required>
-                    <option>Seleccione un contratista</option>
-                    @foreach ($contractors as $contractor)
-                        <option value="{{$contractor->id}}">{{$contractor->name_contractor}}</option>
-                    @endforeach
-                </select>
-
-                <label for="nitCustomer">Seleccion el nit del cliente asociado al certificado</label>
-                <select name="nit_customer" id="nitCustomer" required>
-                    <option>Seleccione el cliente</option>
-                    @foreach ($customers as $customer)
-                        <option value="{{$customer->id}}">{{$customer->id}}</option>
-                    @endforeach
-                </select>
-
-                <label for="idContract">Seleccione el contrato asociado al certificado</label>
-                <select name="id_contract" id="idContract" required>
-                    <option>Seleccione el contratista</option>
-                    @foreach ($contracts as $contract)
-                        <option value="{{$contract->id}}">{{$contract->id_contract}}</option>
-                    @endforeach
-                </select>
-
-                <label for="dateExp">Ingrese fecha de expedicion</label>
-                <input type="date" name="date_expedition" id="dateExp" required>
-
-                <label for="tema" >Ingrese tema del certificado a generar</label>
-                <input type="text" name="issue" id="tema" placeholder="Ingrese el tema" required>
-                <button type="submit" class="btn btn-info">Generar certificado</button>
-            </form>
-        </div>
-                    <footer>
-                        <div id="divFo" class="container">
-                            <div class="row justify-content-start">
-                                <div class="col-5 mt-4">
-                                    <p>&COPY; copyright 2023 MAS BIOMAS S.A.S | Todos los derechos reservados</p>
-                                </div>
-                                <div class="col-4 mt-4">
-                                    <p>
-                                        <a class="underline" href="">Terminos y condiciones</a>
-                                        <a class="underline" target="_blank" rel="noopener noreferrer" href="">Politicas de privacidad de la información</a>
-                                    </p>
-                                </div>
-                                <div id="iconosFo" class="col-3 mt-4">
-                                    <i class="fa-brands fa-instagram" style="color: #000000;"></i>
-                                    <i class="fa-brands fa-linkedin" style="color: #000000;"></i>
-                                </div>
+                    <div>
+                        @if ($errors->any())
+                            @foreach ($errors->all() as $error)
+                                <div class="alert alert-danger" role="alert">{{$error}}</div>
+                            @endforeach
+                        @endif
+                        <h1>Crear nuevos certificados</h1>
+                        <form action="{{ route('certificates.store') }}" method="POST">
+                            @csrf
+                            <div class="form-group">
+                                <label for="idCertificado">Ingresar Id del certificado</label>
+                                <input type="text" name="id_certificate" id="idCertificado" placeholder="Ingrese el identificador" >
                             </div>
-                        </div>
-                    </footer>
+
+                            <div class="form-group mt-3">
+                                <label for="idContratista">Seleccione el contratista asociado al contrato: </label>
+                                <select name="id_contra" id="idContratista" >
+                                    <option>Seleccione un contratista</option>
+                                    @foreach ($contractors as $contractor)
+                                        <option value="{{$contractor->id}}">{{$contractor->name_contractor}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <div class="form-group mt-3">
+                                <label for="nitCustomer">Seleccion el nit del cliente asociado al certificado</label>
+                                <select name="nit_customer" id="nitCustomer" >
+                                    <option>Seleccione el cliente</option>
+                                    @foreach ($customers as $customer)
+                                        <option value="{{$customer->id}}">{{$customer->id}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <div class="form-group mt-3">
+                                <label for="idContract">Seleccione el contrato asociado al certificado</label>
+                                <select name="id_contract" id="idContract" >
+                                    <option>Seleccione el contratista</option>
+                                    @foreach ($contracts as $contract)
+                                        <option value="{{$contract->id}}">{{$contract->id_contract}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <div class="form-group mt-3">
+                                <label for="tema" >Ingrese tema del certificado a generar</label>
+                                <input type="text" name="issue" id="tema" placeholder="Ingrese el tema">
+                            </div>
+                            
+                            <div class="form-group mt-3">
+                                <label for="dateExp">Ingrese fecha de expedicion</label>
+                                <input type="date" name="date_expedition" id="dateExp" >
+                            </div>
+
+                            <button type="submit" class="btn btn-success mt-3">Generar certificado</button>
+                        </form>
+                    </div>
                 </div>
-</body>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-        crossorigin="anonymous"></script>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div id="divFo" class="container">
+            <div class="row justify-content-start">
+                <div class="col-5 mt-4">
+                    <p>&COPY; copyright 2023 MAS BIOMAS S.A.S | Todos los derechos reservados</p>
+                </div>
+                <div class="col-4 mt-4">
+                    <p>
+                        <a class="underline" href="">Terminos y condiciones</a>
+                        <a class="underline" target="_blank" rel="noopener noreferrer" href="">Politicas de privacidad de la información</a>
+                    </p>
+                </div>
+                <div id="iconosFo" class="col-3 mt-4">
+                    <i class="fa-brands fa-instagram" style="color: #000000;"></i>
+                    <i class="fa-brands fa-linkedin" style="color: #000000;"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 </html>

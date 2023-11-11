@@ -95,25 +95,25 @@
                             @method('PUT')
                             <div class="form-group">
                                 <label for="identificador">Ingrese su numero de cedula</label>
-                                <input type="text" name="dni" id="identificador" value="{{ $adminProject->dni }}">
+                                <input type="text" class="form-control text-center" name="dni" id="identificador" value="{{ $adminProject->dni }}">
                             </div>
                             <div class="form-group">
                                 <label for="nombre">Ingrese su nombre</label>                
-                                <input type="text" name="name" value="{{ $adminProject->email }}">
+                                <input type="text" class="form-control text-center"  name="name" value="{{ $adminProject->email }}">
                             </div>
                             <div class="form-group">
                                 <label for="telefono">Ingrese su numero de telefono</label>
-                                <input type="text" name="number_phone" id="telefono" value="{{ $adminProject->number_phone }}">
+                                <input type="text" class="form-control text-center" name="number_phone" id="telefono" value="{{ $adminProject->number_phone }}">
                             </div>
                             <div class="form-group">
                                 <label for="direccion">Ingrese su direccion</label>
-                                <input type="text" name="address" id="direccion" value="{{ $adminProject->address }}">
+                                <input type="text" class="form-control text-center" name="address" id="direccion" value="{{ $adminProject->address }}">
                             </div>
                             <div class="form-group">
                                 <label for="email">Ingrese su email</label>
-                                <input type="text" name="email" id="email" value="{{ $adminProject->email }}">
+                                <input type="text" class="form-control text-center" name="email" id="email" value="{{ $adminProject->email }}">
                             </div>
-                            <button type="submit" class="btn btn-success">Enviar</button>
+                            <button type="submit" class="btn btn-success mt-3">Enviar</button>
                         </form>
                     </div>
                 </div>
