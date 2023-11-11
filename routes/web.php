@@ -61,3 +61,6 @@ Route::post("/cliente",[CustomersController::class,'store'])->name("customer.sto
 Route::delete("/cliente/{id}",[CustomersController::class,'destroy'])->name("customer.destroy");
 Route::put("/cliente/{id}",[CustomersController::class,'update'])->name("customer.update");
 Route::get("/cliente_edit/{id}",[CustomersController::class,'edit'])->name("customer.edit");
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
