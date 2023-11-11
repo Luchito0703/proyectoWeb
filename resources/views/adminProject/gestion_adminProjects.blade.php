@@ -6,10 +6,10 @@
     <link href="/css/admins.css" rel="stylesheet">
     <script src="/js/tu_archivo.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <title>Document</title>
+    <title>Administrador De Proyectos</title>
 </head>
 <body>
-<header class="sticky-top py-3">
+    <header class="sticky-top py-3">
         <div class="logo">
             <img id="logo"  src="/img/logo.png" alt="" srcset="">
             <h4 class="font-weight-bold">Más Biomas S.A.S</h4>
@@ -18,7 +18,7 @@
             <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="usuarioMenu" data-bs-toggle="dropdown" aria-expanded="false">
                 <img src="https://www.softzone.es/app/uploads/2018/04/guest.png?x=480&quality=40" alt="perfil de usuario" width="30" height="30" class="rounded-circle">
                 <span class="d-none d-sm-inline mx-1">Nombre usuario</span>
-                </a>
+            </a>
             <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
                 <li><a class="dropdown-item" href="#">Mensajes</a></li>
                 <li>
@@ -87,62 +87,62 @@
                 <div class="container pt-3 container text-center">
                     <div>
                         <h2>Crear nuevo administrador de Proyectos</h2>
-                            @if ($errors->any())
-                                @foreach ($errors->all() as $error)
-                                    <div class="alert alert-danger" role="alert">{{$error}}</div>
-                                @endforeach
-                            @endif
+                        @if ($errors->any())
+                            @foreach ($errors->all() as $error)
+                                <div class="alert alert-danger" role="alert">{{$error}}</div>
+                            @endforeach
+                        @endif
                         <form action="{{ route('adminProjects.store') }}" method="post">
                             @csrf
                             <div class="form-group">
                                 <label for="identificador">Ingrese su numero de cedula</label>
-                                <input type="text" name="dni" id="identificador">
+                                <input type="text" class="form-control text-center" name="dni" id="identificador">
                             </div>
 
                             <div class="form-group">
                                 <label for="nombre">Ingrese su nombre</label>
-                                <input type="text" name="name">
+                                <input type="text" class="form-control text-center" name="name">
                             </div>
 
                             <div class="form-group">
                                 <label for="telefono">Ingrese su numero de telefono</label>
-                                <input type="text" name="number_phone" id="telefono" >
+                                <input type="text" class="form-control text-center" name="number_phone" id="telefono" >
                             </div>
 
                             <div class="form-group">
                                 <label for="direccion">Ingrese su direccion</label>
-                                <input type="text" name="address" id="direccion" >
+                                <input type="text" class="form-control text-center" name="address" id="direccion" >
                             </div>
 
                             <div class="form-group">
                                 <label for="email">Ingrese su email</label>
-                                <input type="text" name="email" id="email" >
+                                <input type="text" class="form-control text-center" name="email" id="email" >
                             </div>
 
-                            <button type="submit" class="btn btn-success">Enviar</button>
+                            <button type="submit" class="btn btn-success mt-2">Enviar</button>
                         </form>
                     </div>
                 </div>
                 <div class="container pt-5 container text-center">
-                    <table class="table table-striped-columns">
+                    <table class="table table-striped">
                         <thead>
                             <tr>
-                                <th scope="col">Numero de cedula</th>
-                                <th scope="col">Nombre del administrador del proyecto</th>
-                                <th scope="col">Numero de telefono del administrador del proyecto</th>
-                                <th scope="col">Direccion del administrador del proyecto</th>
-                                <th scope="col">Correo electronico del administrador del proyecto</th>
+                                <th scope="col" class="text-center align-middle">Numero de cedula</th>
+                                <th scope="col" class="text-center align-middle">Nombre del administrador del proyecto</th>
+                                <th scope="col" class="text-center align-middle">Numero de telefono del administrador del proyecto</th>
+                                <th scope="col" class="text-center align-middle">Direccion del administrador del proyecto</th>
+                                <th scope="col" class="text-center align-middle">Correo electronico del administrador del proyecto</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($adminProjects as $adminProject)
                                 <tr class="container text-center">
-                                    <td class="container text-center align-middle">{{$adminProject->dni}}</td>
-                                    <td class="container text-center align-middle">{{$adminProject->name}}</td>
-                                    <td class="container text-center align-middle">{{$adminProject->number_phone}}</td>
-                                    <td class="container text-center align-middle">{{$adminProject->address}}</td>
-                                    <td class="container text-center align-middle">{{$adminProject->email}}</td>
-                                    <td class="container text-center align-middle">
+                                    <td class="container text-center align-middle col-2">{{$adminProject->dni}}</td>
+                                    <td class="container text-center align-middle col-2">{{$adminProject->name}}</td>
+                                    <td class="container text-center align-middle col-2">{{$adminProject->number_phone}}</td>
+                                    <td class="container text-center align-middle col-3">{{$adminProject->address}}</td>
+                                    <td class="container text-center align-middle col-2">{{$adminProject->email}}</td>
+                                    <td class="container text-center align-middle col-1">
                                         <a href="{{ route('adminProjects.edit', $adminProject->id) }}" class="btn btn-primary">Editar</a>
                                         <form action="{{ route('adminProjects.destroy', $adminProject->id) }}" method="post">
                                             @csrf

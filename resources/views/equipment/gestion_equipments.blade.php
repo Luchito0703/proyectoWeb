@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Equipo</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -64,34 +64,42 @@
             </div>
             <div class="col">
                 <div class="container pt-3 container text-center">
+                    <h1>Crear nuevo equipo</h1>
                     <form action="{{route('equipments.store')}}" method="post">
-                    @csrf
-                        <label for="id">Ingrese referencia del equipo</label>
-                        <input type="text" name="id_equipment" id="id" required>
-                        <label for="name">Ingrese nombre del equipo</label>
-                        <input type="text" name="name_equipment" id="name" required>
-                        <button type="submit" class="btn btn-success">Guardar</button>
+                        @csrf
+                        <div class="form-group">
+                            <label for="id">Ingrese referencia del equipo</label>
+                            <input type="text" class="form-control text-center" name="id_equipment" id="id" placeholder="Referencia del equipo">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="name" class="mt-2">Ingrese nombre del equipo</label>
+                            <input type="text" class="form-control text-center" name="name_equipment" id="name" placeholder="Nombre del equipo">
+                        </div>
+
+                        <button type="submit" class="btn btn-success mt-3">Guardar</button>
                     </form>
                 </div>
             <div class="text-center">
-                <table class="table">
+                <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th>Referencia del equipo</th>
-                            <th>Nombre del equipo</th>
+                            <th scope="col">Referencia del equipo</th>
+                            <th scope="col">Nombre del equipo</th>
+                            <th scope="col">Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($equipments as $equipment)
-                            <tr>
-                                <td>{{$equipment->id_equipment}}</td>
-                                <td>{{$equipment->name_equipment}}</td>
-                                <td>
-                                    <a href="{{route('equipments.edit',$equipment->id)}}"><button class="btn btn-warning">Editar</button></a>
+                            <tr class="container text-center">
+                                <td class="text-center align-middle">{{$equipment->id_equipment}}</td>
+                                <td class="text-center align-middle">{{$equipment->name_equipment}}</td>
+                                <td class="text-center align-middle">
+                                    <a href="{{route('equipments.edit',$equipment->id)}}"class="btn btn-primary">Editar</a>
                                     <form action="{{route('equipments.destroy',$equipment->id)}}" method="post">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                                        <button type="submit" class="btn btn-danger mt-2">Eliminar</button>
                                     </form>
                                 </td>
                             </tr>
