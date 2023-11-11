@@ -25,10 +25,10 @@ class LoansController extends Controller
         $loan-> id_prest = $request->id_prest;
         $loan-> id_contractor = $request->id_contractor;
         $loan-> id_equipment = $request->id_equipment;
-        $loan-> date_devolution = $request->date_devolution;
         $loan-> date_loan = $request->date_loan;
+        $loan-> date_devolution = $request->date_devolution;
         $loan->save();
-        return redirect()->route('loan.index');
+        return redirect()->route('loans.index');
     }
 
 
@@ -50,12 +50,12 @@ class LoansController extends Controller
     {
         $loan = loan::find($id);
         $loan-> id_prest = $request->id_prest;
-        $loan-> id_contractor = $request->id_contractor;
+        $id_contractor = $request->id_contractor;
         $loan-> id_equipment = $request->id_equipment;
-        $loan-> date_devolution = $request->date_devolution;
         $loan-> date_loan = $request->date_loan;
+        $loan-> date_devolution = $request->date_devolution;
         $loan->save();
-        return redirect()->route('loan.index');
+        return redirect()->route('loans.index');
     }
 
    
@@ -63,6 +63,6 @@ class LoansController extends Controller
     {
         $loan = loan::find($id);
         $loan->delete();
-        return redirect()->route('loan.index');
+        return redirect()->route('loans.index');
     }
 }

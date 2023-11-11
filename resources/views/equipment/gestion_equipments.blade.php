@@ -70,7 +70,7 @@
                         <input type="text" name="id_equipment" id="id" required>
                         <label for="name">Ingrese nombre del equipo</label>
                         <input type="text" name="name_equipment" id="name" required>
-                        <button type="submit">Guardar</button>
+                        <button type="submit" class="btn btn-success">Guardar</button>
                     </form>
                 </div>
             <div class="text-center">

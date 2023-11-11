@@ -20,8 +20,8 @@ class CreateLoansTable extends Migration
             $table->foreign("id_contractor")->references("id")->on("contractors");
             $table->unsignedBigInteger("id_equipment")->comment("Id del Equipo de Campo");
             $table->foreign("id_equipment")->references("id")->on("equipment");
-            $table->date("date_devolution")->comment("Fecha de Devolución");
             $table->date("date_loan")->comment("Fecha de Prestamo");
+            $table->date("date_devolution")->comment("Fecha de Devolución");
             $table->timestamps();
         });
     }
