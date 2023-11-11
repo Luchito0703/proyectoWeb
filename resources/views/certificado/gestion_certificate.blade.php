@@ -65,6 +65,7 @@
             <div class="col">
                 <div class="container pt-3 container text-center">
                     <div>
+
                         @if ($errors->any())
                             @foreach ($errors->all() as $error)
                                 <div class="alert alert-danger" role="alert">{{$error}}</div>
@@ -86,11 +87,14 @@
                                         <option value="{{$contractor->id}}">{{$contractor->name_contractor}}</option>
                                     @endforeach
                                 </select>
+
                             </div>
 
                             <div class="form-group mt-3">
                                 <label for="nitCustomer">Seleccion el nit del cliente asociado al certificado</label>
+
                                 <select name="nit_customer" id="nitCustomer" class="form-control text-center" >
+
                                     <option>Seleccione el cliente</option>
                                     @foreach ($customers as $customer)
                                         <option value="{{$customer->id}}">{{$customer->id}}</option>
@@ -100,6 +104,7 @@
 
                             <div class="form-group mt-3">
                                 <label for="idContract">Seleccione el contrato asociado al certificado</label>
+
                                 <select name="id_contract" id="idContract" class="form-control text-center">
                                     <option>Seleccione el contratista</option>
                                     @foreach ($contracts as $contract)
@@ -116,6 +121,7 @@
                             <div class="form-group mt-3">
                                 <label for="dateExp">Ingrese fecha de expedicion</label>
                                 <input type="date" class="form-control text-center" name="date_expedition" id="dateExp" >
+
                             </div>
 
                             <button type="submit" class="btn btn-success mt-3">Generar certificado</button>
@@ -147,3 +153,4 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 </html>
+
