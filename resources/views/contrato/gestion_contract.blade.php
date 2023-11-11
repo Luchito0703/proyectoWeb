@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Contrato</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -64,97 +64,108 @@
             </div>
             <div class="col">
                 <div class="container pt-3 container text-center">
-                <div>
-            @if ($errors->any())
-	            @foreach ($errors->all() as $error)
-		            <div class="alert alert-danger" role="alert">{{$error}}</div>
-	            @endforeach
-            @endif
-            <form action="{{ route('contracts.store') }}" method="post">
-                @csrf
-                <label for="contrato">Identificador del contrato</label>
-                <input type="number" name="id_contract" id="contrato">
-
-                <label for="contratista">Identificador del contratista</label>
-                <select name="id_contra" id="contratista">
-                    <option>Seleccione un contratista</option>
-                    @foreach ($contractors as $contractor)
-                        <option value="{{ $contractor->id }}">{{ $contractor->name_contractor }}</option>
-                    @endforeach                        
-                </select>
-
-                <label for="cedula">Cédula del administrador del proyecto</label>
-                <select name="dni_admin_proj" id="cedula">
-                    <option>Seleccione un administrador de proyecto</option>
-                    @foreach ($adminProjects as $adminProject)
-                        <option value="{{ $adminProject->id }}">{{ $adminProject->dni }}</option>
-                    @endforeach
-                </select>
-
-                <label for="cliente">Número de nit de la empresa cliente</label>
-                <select name="nit_customer" id="cliente">
-                    <option>Seleccione el nit de la empresa</option>
-                    @foreach($customers as $customer)
-                        <option value="{{ $customer->id }}">{{ $customer->name_customer }}</option>
-                    @endforeach
-                </select>
-
-                <button type="submit" class="btn btn-success">Enviar</button>
-            </form>
-        </div>
-        <div>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Identificador del contrato</th>
-                        <th>Nombre del contratista</th>
-                        <th>Nombre del administrador del proyecto</th>
-                        <th>Nombre de la empresa</th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($contracts as $contract)
-                        <tr>
-                            <td>{{ $contract->id_contract }}</td>
-                            <td>{{ $contract->contractor ? $contract->contractor->id_contractor : 'N/A' }}</td> 
-                            <td>{{ $contract->adminProject ? $contract->adminProject->dni : 'N/A' }}</td>
-                            <td>{{ $contract->customer ? $contract->customer->nit_customer : 'N/A' }}</td>
-                            <td>
-                                <a href="{{ route('contracts.edit', $contract->id) }}">Editar</a>
-                                <form action="{{ route('contracts.destroy', $contract->id) }}" method="post">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit">Eliminar</button>
-                                </form>
-                            </td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
-        </div>
-                    <footer>
-                        <div id="divFo" class="container">
-                            <div class="row justify-content-start">
-                                <div class="col-5 mt-4">
-                                    <p>&COPY; copyright 2023 MAS BIOMAS S.A.S | Todos los derechos reservados</p>
-                                </div>
-                                <div class="col-4 mt-4">
-                                    <p>
-                                        <a class="underline" href="">Terminos y condiciones</a>
-                                        <a class="underline" target="_blank" rel="noopener noreferrer" href="">Politicas de privacidad de la información</a>
-                                    </p>
-                                </div>
-                                <div id="iconosFo" class="col-3 mt-4">
-                                    <i class="fa-brands fa-instagram" style="color: #000000;"></i>
-                                    <i class="fa-brands fa-linkedin" style="color: #000000;"></i>
-                                </div>
+                    <div>
+                        @if ($errors->any())
+                            @foreach ($errors->all() as $error)
+                                <div class="alert alert-danger" role="alert">{{$error}}</div>
+                            @endforeach
+                        @endif
+                        <form action="{{ route('contracts.store') }}" method="post">
+                            @csrf
+                            <div class="form-group mt-1">
+                                <label for="contrato">Identificador del contrato</label>
+                                <input type="number" class="form-control text-center" name="id_contract" id="contrato" placeholder="Ingrese el id del contrato">
                             </div>
-                        </div>
-                    </footer>
+
+                            <div class="form-group mt-2">
+                                <label for="contratista">Seleccione el contratista asociado al contrato</label>
+                                <select name="id_contra" id="contratista" class="form-control text-center">
+                                    <option>Seleccione un contratista</option>
+                                    @foreach ($contractors as $contractor)
+                                        <option value="{{ $contractor->id }}">{{ $contractor->name_contractor }}</option>
+                                    @endforeach                        
+                                </select>
+                            </div>
+
+                            <div class="form-group mt-2">
+                                <label for="cedula">Cédula del administrador del proyecto</label>
+                                <select name="dni_admin_proj" id="cedula" class="form-control text-center">
+                                    <option>Seleccione un administrador de proyecto</option>
+                                    @foreach ($adminProjects as $adminProject)
+                                        <option value="{{ $adminProject->id }}">{{ $adminProject->dni }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <div class="form-group mt-2">
+                                <label for="cliente">Seleccione el cliente asociado</label>
+                                <select name="nit_customer" id="cliente" class="form-control text-center">
+                                    <option>Seleccione un cliente</option>
+                                    @foreach($customers as $customer)
+                                        <option value="{{ $customer->id }}">{{ $customer->name_customer }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <button type="submit" class="btn btn-success mt-2">Enviar</button>
+                        </form>
+                    </div>
+                    <div>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Identificador del contrato</th>
+                                    <th scope="col">Nombre del contratista</th>
+                                    <th scope="col">Nombre del administrador del proyecto</th>
+                                    <th scope="col">Nombre de la empresa</th>
+                                    <th scope="col">Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($contracts as $contract)
+                                    <tr class="container text-center">
+                                        <td class="text-center align-middle">{{ $contract->id_contract }}</td>
+                                        <td class="text-center align-middle">{{ $contract->contractor ? $contract->contractor->name_contractor : 'N/A' }}</td> 
+                                        <td class="text-center align-middle">{{ $contract->adminProject ? $contract->adminProject->dni : 'N/A' }}</td>
+                                        <td class="text-center align-middle">{{ $contract->customer ? $contract->customer->name_customer : 'N/A' }}</td>
+                                        <td class="text-center align-middle">
+                                            <a href="{{ route('contracts.edit', $contract->id) }}" class="btn btn-primary">Editar</a>
+                                            <form action="{{ route('contracts.destroy', $contract->id) }}" method="post" class="mt-2">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger">Eliminar</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-</body>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div id="divFo" class="container">
+            <div class="row justify-content-start">
+                <div class="col-5 mt-4">
+                    <p>&COPY; copyright 2023 MAS BIOMAS S.A.S | Todos los derechos reservados</p>
+                </div>
+                <div class="col-4 mt-4">
+                    <p>
+                        <a class="underline" href="">Terminos y condiciones</a>
+                        <a class="underline" target="_blank" rel="noopener noreferrer" href="">Politicas de privacidad de la información</a>
+                    </p>
+                </div>
+                <div id="iconosFo" class="col-3 mt-4">
+                    <i class="fa-brands fa-instagram" style="color: #000000;"></i>
+                    <i class="fa-brands fa-linkedin" style="color: #000000;"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
+</body>
 </html>

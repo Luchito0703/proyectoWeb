@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>prestamo</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -64,99 +64,110 @@
             </div>
             <div class="col">
                 <div class="container pt-3 container text-center">
-                    <div class="container text-center">
-        <div>
-            <h1 class="text-center">Solicitudes de equipo:</h1>
-            @if ($errors->any())
-	            @foreach ($errors->all() as $error)
-		            <div class="alert alert-danger" role="alert">{{$error}}</div>
-	            @endforeach
-            @endif
-            <form action="{{ route('loans.store') }}" method="POST">
-                @csrf
-                <label for="prestamo">Identificador del préstamo</label>
-                <input type="number" id="prestamo" name="id_prest" required><br>
-                <label for="contratista">Identificación del contratista</label>
-                <select name="id_contractor" id="contratista" required> 
-                    <option value="0">Seleccione el contratista</option>
-                    @foreach ($contractors as $contra)
-                        <option value="{{$contra->id}}">{{$contra->name_contractor}}</option>
-                    @endforeach
-                </select>
-                <label for="equipo">Seleccione el equipo</label>
-                <select name="id_equipment" id="equipo" required>
-                    <option value="0">Seleccione el equipo necesario</option>
-                    @foreach ($equipments as $equipment)
-                        <option value="{{$equipment->id}}">{{$equipment->name_equipment}}</option>
-                    @endforeach
-                </select><br>
-                <label for="prestacion">Fecha de préstamo</label>
-                <input type="date" name="date_loan" id="prestacion" required>
-                <label for="devolucion">Fecha de devolución</label>
-                <input type="date" name="date_devolution" id="devolucion" required>
-                <button type="submit" class="btn btn-success">Enviar solicitud</button>
-            </form>
+                    <h1 class="text-center">Solicitudes de equipo:</h1>
+                    @if ($errors->any())
+                        @foreach ($errors->all() as $error)
+                            <div class="alert alert-danger" role="alert">{{$error}}</div>
+                        @endforeach
+                    @endif
+                    <form action="{{ route('loans.store') }}" method="POST">
+                        @csrf
+                        <div class="form-group">
+                            <label for="prestamo">Identificador del préstamo</label>
+                            <input type="number" class="form-control text-center" id="prestamo" name="id_prest" placeholder="Identificador del prestamo">
+                        </div>
 
-        </div>
-        <div>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th> Identificador del prestamo</th>
-                        <th> Identificador del contratista</th>
-                        <th> Identificador del equipo</th>
-                        <th> Fecha de prestamo</th>
-                        <th> Fecha de devolucion</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($loans as $loan)
-                        <tr>
-                            <td>{{$loan->id_prest}}</td>
-                            <td>{{$loan->id_contractor}}</td>
-                            <td>{{$loan->id_equipment}}</td>
-                            <td>{{$loan->date_loan}}</td>
-                            <td>{{$loan->date_devolution}}</td>
-                            <td>
-                                <a href="{{ route('loans.edit',$loan->id) }}" >Editar</a>
-                                <form action="{{ route('loans.destroy', $loan->id) }}" method="post">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit">Eliminar</button>
-                                </form>
-                            </td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
+                        <div class="form-group">
+                            <label for="contratista" class="mt-2">Identificación del contratista</label>
+                            <select name="id_contractor" class="form-control text-center" id="contratista" required> 
+                                <option value="0">Seleccione el contratista</option>
+                                @foreach ($contractors as $contra)
+                                    <option value="{{$contra->id}}">{{$contra->name_contractor}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="equipo" class="mt-2">Seleccione el equipo</label>
+                            <select name="id_equipment" class="form-control text-center" id="equipo" required>
+                                <option value="0">Seleccione el equipo necesario</option>
+                                @foreach ($equipments as $equipment)
+                                    <option value="{{$equipment->id}}">{{$equipment->name_equipment}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="prestacion" class="mt-2">Fecha de préstamo</label>
+                            <input type="date" class="form-control text-center" name="date_loan" id="prestacion">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="devolucion" class="mt-2">Fecha de devolución</label>
+                            <input type="date" class="form-control text-center" name="date_devolution" id="devolucion">
+                        </div>
+
+                        <button type="submit" class="btn btn-success mt-3">Enviar solicitud</button>
+                    </form>
+                </div>
+                <div class="container pt-5 text-center">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col"> Identificador del prestamo</th>
+                                <th scope="col"> Identificador del contratista</th>
+                                <th scope="col"> Identificador del equipo</th>
+                                <th scope="col"> Fecha de prestamo</th>
+                                <th scope="col"> Fecha de devolucion</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($loans as $loan)
+                                <tr class="container text-center">
+                                    <td class="text-center align-middle">{{$loan->id_prest}}</td>
+                                    <td class="text-center align-middle">{{$loan->id_contractor}}</td>
+                                    <td class="text-center align-middle">{{$loan->id_equipment}}</td>
+                                    <td class="text-center align-middle">{{$loan->date_loan}}</td>
+                                    <td class="text-center align-middle">{{$loan->date_devolution}}</td>
+                                    <td class="text-center align-middle">
+                                        <a href="{{ route('loans.edit',$loan->id) }}" class="btn btn-primary">Editar</a>
+                                        <form action="{{ route('loans.destroy', $loan->id) }}" method="post" class="mt-2">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger">Eliminar</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
+    <footer>
+        <div id="divFo" class="container">
+            <div class="row justify-content-start">
+                <div class="col-5 mt-4">
+                    <p>&COPY; copyright 2023 MAS BIOMAS S.A.S | Todos los derechos reservados</p>
                 </div>
-                    <footer>
-                        <div id="divFo" class="container">
-                            <div class="row justify-content-start">
-                                <div class="col-5 mt-4">
-                                    <p>&COPY; copyright 2023 MAS BIOMAS S.A.S | Todos los derechos reservados</p>
-                                </div>
-                                <div class="col-4 mt-4">
-                                    <p>
-                                        <a class="underline" href="">Terminos y condiciones</a>
-                                        <a class="underline" target="_blank" rel="noopener noreferrer" href="">Politicas de privacidad de la información</a>
-                                    </p>
-                                </div>
-                                <div id="iconosFo" class="col-3 mt-4">
-                                    <i class="fa-brands fa-instagram" style="color: #000000;"></i>
-                                    <i class="fa-brands fa-linkedin" style="color: #000000;"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </footer>
+                <div class="col-4 mt-4">
+                    <p>
+                        <a class="underline" href="">Terminos y condiciones</a>
+                        <a class="underline" target="_blank" rel="noopener noreferrer" href="">Politicas de privacidad de la información</a>
+                    </p>
                 </div>
-</body>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+                <div id="iconosFo" class="col-3 mt-4">
+                    <i class="fa-brands fa-instagram" style="color: #000000;"></i>
+                    <i class="fa-brands fa-linkedin" style="color: #000000;"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
-</html>
 </body>
 </html>
+
         
