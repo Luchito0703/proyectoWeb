@@ -76,6 +76,7 @@
                 @csrf
                 <label for="prestamo">Identificador del préstamo</label>
                 <input type="number" id="prestamo" name="id_prest" required><br>
+                
                 <label for="contratista">Identificación del contratista</label>
                 <select name="id_contractor" id="contratista" required> 
                     <option value="0">Seleccione el contratista</option>
