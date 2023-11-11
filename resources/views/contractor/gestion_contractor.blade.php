@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Contratista</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -64,83 +64,107 @@
             </div>
             <div class="col">
                 <div class="container pt-3 container text-center">
-                <div>
-            @if ($errors->any())
-	            @foreach ($errors->all() as $error)
-		            <div class="alert alert-danger" role="alert">{{$error}}</div>
-	            @endforeach
-            @endif
-            <form action="{{route('contractors.store')}}" method="post">
-                @csrf
-                <label for="indetificador">indetificador del contratista</label>
-                <input type="text" name="id_contractor" id="identificador">
-
-                <label for="nombre">Nombre del contratista</label>
-                <input type="text" name="name_contractor" id="nombre">
-
-                <label for="telefono">Numero de telefono del contratista</label>
-                <input type="text" name="number_phone" id="telefono">
-
-                <label for="direccion">Direccion del contratista</label>
-                <input type="text" name="address_contractor">
-
-                <label for="cedula">Cedula del contratista</label>
-                <input type="text" name="dni_contractor" id="cedula">
-            
-                <label for="emaul">Correo electronico del contratista</label>
-                <input type="text" name="email_contractor">
-
-                <button type="submit" class="btn btn-success">Guardar</button>
-            </form>
-        </div>
-        <div>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>identificador del contratista</th>
-                        <th>Nombre del contratista</th>
-                        <th>Numero de telefono del contratista</th>
-                        <th>Direccion del contratista</th>
-                        <th>Cedula del contratista</th>
-                        <th>Correo electronico del contratista</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($contractors as $contractor)
-                        <tr>
-                            <td>{{$contractor->id_contractor}}</td>
-                            <td>{{$contractor->name_contractor}}</td>
-                            <td>{{$contractor->number_phone}}</td>
-                            <td>{{$contractor->address_contractor}}</td>
-                            <td>{{$contractor->dni_contractor}}</td>
-                            <td>{{$contractor->email_contractor}}</td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
-        </div>
-                    <footer>
-                        <div id="divFo" class="container">
-                            <div class="row justify-content-start">
-                                <div class="col-5 mt-4">
-                                    <p>&COPY; copyright 2023 MAS BIOMAS S.A.S | Todos los derechos reservados</p>
-                                </div>
-                                <div class="col-4 mt-4">
-                                    <p>
-                                        <a class="underline" href="">Terminos y condiciones</a>
-                                        <a class="underline" target="_blank" rel="noopener noreferrer" href="">Politicas de privacidad de la información</a>
-                                    </p>
-                                </div>
-                                <div id="iconosFo" class="col-3 mt-4">
-                                    <i class="fa-brands fa-instagram" style="color: #000000;"></i>
-                                    <i class="fa-brands fa-linkedin" style="color: #000000;"></i>
-                                </div>
+                    <div>
+                        <h1>Crear nuevo contratista</h1>
+                        @if ($errors->any())
+                            @foreach ($errors->all() as $error)
+                                <div class="alert alert-danger" role="alert">{{$error}}</div>
+                            @endforeach
+                        @endif
+                        <form action="{{route('contractors.store')}}" method="post">
+                            @csrf
+                            <div class="form-group">
+                                <label for="identificador">Identificador del contratista</label>
+                                <input type="text" class="form-control text-center" name="id_contractor" id="identificador">
                             </div>
-                        </div>
-                    </footer>
+
+                            <div class="form-group">
+                                <label for="nombre">Nombre del contratista</label>
+                                <input type="text" class="form-control text-center" name="name_contractor" id="nombre">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="telefono">Numero de telefono del contratista</label>
+                                <input type="text" class="form-control text-center" name="number_phone" id="telefono">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="direccion">Direccion del contratista</label>
+                                <input type="text" class="form-control text-center" name="address_contractor">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="cedula">Cedula del contratista</label>
+                                <input type="text" class="form-control text-center" name="dni_contractor" id="cedula">
+                            </div>
+                        
+                            <div class="form-group">
+                                <label for="emaul">Correo electronico del contratista</label>
+                                <input type="text" class="form-control text-center" name="email_contractor">
+                            </div>
+
+                            <button type="submit" class="btn btn-success mt-3">Guardar</button>
+                        </form>
+                    </div>
                 </div>
-</body>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+                <div class="container pt-5 text-center">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">Identificador del contratista</th>
+                                <th scope="col">Nombre del contratista</th>
+                                <th scope="col">Numero de telefono del contratista</th>
+                                <th scope="col">Direccion del contratista</th>
+                                <th scope="col">Cedula del contratista</th>
+                                <th scope="col">Correo electronico del contratista</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($contractors as $contractor)
+                                <tr>
+                                    <td class="text-center align-middle">{{$contractor->id_contractor}}</td>
+                                    <td class="text-center align-middle">{{$contractor->name_contractor}}</td>
+                                    <td class="text-center align-middle">{{$contractor->number_phone}}</td>
+                                    <td class="text-center align-middle">{{$contractor->address_contractor}}</td>
+                                    <td class="text-center align-middle">{{$contractor->dni_contractor}}</td>
+                                    <td class="text-center align-middle">{{$contractor->email_contractor}}</td>
+                                    <td class="text-center align-middle">
+                                        <a href="{{ route('contractors.edit',$contractor->id) }}" class="btn btn-primary" >Editar</a>
+                                        <form action="{{ route('contractors.destroy', $contractor->id) }}" method="post" class="mt-2">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger">Eliminar</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div id="divFo" class="container">
+            <div class="row justify-content-start">
+                <div class="col-5 mt-4">
+                    <p>&COPY; copyright 2023 MAS BIOMAS S.A.S | Todos los derechos reservados</p>
+                </div>
+                <div class="col-4 mt-4">
+                    <p>
+                        <a class="underline" href="">Terminos y condiciones</a>
+                        <a class="underline" target="_blank" rel="noopener noreferrer" href="">Politicas de privacidad de la información</a>
+                    </p>
+                </div>
+                <div id="iconosFo" class="col-3 mt-4">
+                    <i class="fa-brands fa-instagram" style="color: #000000;"></i>
+                    <i class="fa-brands fa-linkedin" style="color: #000000;"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
+</body>
 </html>
