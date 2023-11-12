@@ -65,6 +65,7 @@
             <div class="col">
                 <div class="container pt-3 container text-center">
                     <div>
+                        <h1>Crear nuevo contrato</h1>
                         @if ($errors->any())
                             @foreach ($errors->all() as $error)
                                 <div class="alert alert-danger" role="alert">{{$error}}</div>

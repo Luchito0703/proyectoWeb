@@ -64,73 +64,50 @@
             </div>
             <div class="col">
                 <div class="container pt-3 container text-center">
+                    <div >
+                        <h1>Solicitudes de equipo:</h1>
+                        @if ($errors->any())
+                            @foreach ($errors->all() as $error)
+                                <div class="alert alert-danger" role="alert">{{$error}}</div>
+                            @endforeach
+                        @endif
+                        <form action="{{ route('loans.store') }}" method="POST">
+                            @csrf
+                            <label for="prestamo">Identificador del préstamo</label>
+                            <input type="number" class="form-control text-center" id="prestamo" name="id_prest" placeholder="Identificador del prestamo">
+                            <div class="form-group">
+                                <label for="contratista" class="mt-2">Identificación del contratista</label>
+                                <select name="id_contractor" class="form-control text-center" id="contratista" required> 
+                                    <option value="0">Seleccione el contratista</option>
+                                        @foreach ($contractors as $contra)
+                                            <option value="{{$contra->id}}">{{$contra->name_contractor}}</option>
+                                        @endforeach
+                                </select>
+                            </div>
 
-                    <div class="container text-center">
-     
-            <h1 class="text-center">Solicitudes de equipo:</h1>
-            @if ($errors->any())
-	            @foreach ($errors->all() as $error)
-		            <div class="alert alert-danger" role="alert">{{$error}}</div>
-	            @endforeach
-            @endif
-            <form action="{{ route('loans.store') }}" method="POST">
-                @csrf
-                <label for="prestamo">Identificador del préstamo</label>
-                <input type="number" class="form-control text-center" id="prestamo" name="id_prest" placeholder="Identificador del prestamo">
-                
-                <label for="contratista">Identificación del contratista</label>
-                <select name="id_contractor" id="contratista" required> 
-                    <option value="0">Seleccione el contratista</option>
-                    @foreach ($contractors as $contra)
-                        <option value="{{$contra->id}}">{{$contra->name_contractor}}</option>
-                    @endforeach
-                </select>
-                <label for="equipo">Seleccione el equipo</label>
-                <select name="id_equipment" id="equipo" required>
-                    <option value="0">Seleccione el equipo necesario</option>
-                    @foreach ($equipments as $equipment)
-                        <option value="{{$equipment->id}}">{{$equipment->name_equipment}}</option>
-                    @endforeach
-                </select><br>
-                <label for="prestacion">Fecha de préstamo</label>
-                <input type="date" name="date_loan" id="prestacion" required>
-                <label for="devolucion">Fecha de devolución</label>
-                <input type="date" name="date_devolution" id="devolucion" required>
-                <button type="submit" class="btn btn-success">Enviar solicitud</button>
-            </form>
+                            <div class="form-group">
+                                <label for="equipo" class="mt-2">Seleccione el equipo</label>
+                                <select name="id_equipment" class="form-control text-center" id="equipo" required>
+                                    <option value="0">Seleccione el equipo necesario</option>
+                                    @foreach ($equipments as $equipment)
+                                        <option value="{{$equipment->id}}">{{$equipment->name_equipment}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
 
-                        <div class="form-group">
-                            <label for="contratista" class="mt-2">Identificación del contratista</label>
-                            <select name="id_contractor" class="form-control text-center" id="contratista" required> 
-                                <option value="0">Seleccione el contratista</option>
-                                @foreach ($contractors as $contra)
-                                    <option value="{{$contra->id}}">{{$contra->name_contractor}}</option>
-                                @endforeach
-                            </select>
-                        </div>
+                            <div class="form-group">
+                                <label for="prestacion" class="mt-2">Fecha de préstamo</label>
+                                <input type="date" class="form-control text-center" name="date_loan" id="prestacion">
+                            </div>
 
-                        <div class="form-group">
-                            <label for="equipo" class="mt-2">Seleccione el equipo</label>
-                            <select name="id_equipment" class="form-control text-center" id="equipo" required>
-                                <option value="0">Seleccione el equipo necesario</option>
-                                @foreach ($equipments as $equipment)
-                                    <option value="{{$equipment->id}}">{{$equipment->name_equipment}}</option>
-                                @endforeach
-                            </select>
-                        </div>
+                            <div class="form-group">
+                                <label for="devolucion" class="mt-2">Fecha de devolución</label>
+                                <input type="date" class="form-control text-center" name="date_devolution" id="devolucion">
+                            </div>
 
-                        <div class="form-group">
-                            <label for="prestacion" class="mt-2">Fecha de préstamo</label>
-                            <input type="date" class="form-control text-center" name="date_loan" id="prestacion">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="devolucion" class="mt-2">Fecha de devolución</label>
-                            <input type="date" class="form-control text-center" name="date_devolution" id="devolucion">
-                        </div>
-
-                        <button type="submit" class="btn btn-success mt-3">Enviar solicitud</button>
-                    </form>
+                            <button type="submit" class="btn btn-success mt-3">Enviar solicitud</button>
+                        </form>
+                    </div>
                 </div>
                 <div class="container pt-5 text-center">
                     <table class="table table-striped">
