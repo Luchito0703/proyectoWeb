@@ -9,6 +9,7 @@
     integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="/css/estilos.css">
+  <link rel="icon" href="/img/logoIcono.png" type="image/png">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
@@ -21,10 +22,10 @@
         <h4>Más Biomas S.A.S</h4>
     </div>
     <div class="iconos">
-      <button class="btn"><i class="fa-solid fa-house mt-3"><p class="mt-2 m-1 ">Boton</p></i></button>
-      <button class="btn"><i class="fa-solid fa-question mt-3"><p class="mt-2 m-1">Boton</p> </i></button>
-      <button class="btn"><i class="fa-solid fa-headphones-simple mt-3"><p class="mt-2 m-1">Boton</p></i></button>
-      <button class="btn"><i class="fa-solid fa-user-group mt-3"><p class="mt-2 m-1">Boton</p></i></button>
+      <a href="{{route('principal_page')}}" class="btn"><i class="fa-solid fa-house mt-3"><p class="mt-2 m-1 ">Pagina principal</p></i></a>
+      <a href="" class="btn"><i class="fa-solid fa-question mt-3"><p class="mt-2 m-1">Boton</p> </i></a>
+      <a href="" class="btn"><i class="fa-solid fa-headphones-simple mt-3"><p class="mt-2 m-1">Boton</p></i></a>
+      <a href="{{route('login')}}" class="btn"><i class="fa-solid fa-user-group mt-3"><p class="mt-2 m-1">Iniciar sesion</p></i></a>
     </div>
   </header>
 

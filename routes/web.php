@@ -12,7 +12,10 @@ use App\Http\Controllers\LoansController;
 
 Route::get('/', function () {
     return view('principal_page');
-});
+})->name("principal_page");
+
+Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
+
 
 Route::get("/jefe",[AdminBossController::class,'index'])->name("adminBoss.index");
 Route::post("/jefe",[AdminBossController::class,'store'])->name("adminBoss.store");
