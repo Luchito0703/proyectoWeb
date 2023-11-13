@@ -15,19 +15,18 @@
 
 
 <body>
- <header>
-            <div class="logo">
-                <img id="logo" src="/img/logo.png" alt="" srcset="">
-                <h4>Más Biomas S.A.S</h4>
-            </div>
-
-            <div class="iconos">
-                <button class="btn"><i class="fa-solid fa-house mt-3"><p class="mt-2 m-1 ">Boton</p></i></button>
-                <button class="btn"><i class="fa-solid fa-question mt-3"><p class="mt-2 m-1">Boton</p> </i></button>
-                <button class="btn"><i class="fa-solid fa-headphones-simple mt-3"><p class="mt-2 m-1">Boton</p></i></button>
-                <button class="btn"><i class="fa-solid fa-user-group mt-3"><p class="mt-2 m-1">Boton</p></i></button>
-            </div>
-    </header>
+  <header>
+    <div class="logo">
+      <img id="logo" src="/img/logo.png" alt="" srcset="">
+        <h4>Más Biomas S.A.S</h4>
+    </div>
+    <div class="iconos">
+      <button class="btn"><i class="fa-solid fa-house mt-3"><p class="mt-2 m-1 ">Boton</p></i></button>
+      <button class="btn"><i class="fa-solid fa-question mt-3"><p class="mt-2 m-1">Boton</p> </i></button>
+      <button class="btn"><i class="fa-solid fa-headphones-simple mt-3"><p class="mt-2 m-1">Boton</p></i></button>
+      <button class="btn"><i class="fa-solid fa-user-group mt-3"><p class="mt-2 m-1">Boton</p></i></button>
+    </div>
+  </header>
 
   <div id="m1" class="container mt-4">
     <img src="/img/logo.png" alt="Logo de la empresa">

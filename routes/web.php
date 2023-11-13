@@ -38,7 +38,7 @@ Route::delete("/contratista/{id}",[ContractorsController::class,'destroy'])->nam
 Route::put("/contratista/{id}",[ContractorsController::class,'update'])->name("contractors.update");
 Route::get("/contratista_edit/{id}",[ContractorsController::class,'edit'])->name("contractors.edit");
 
-Route::middleware(['auth','role:admin_boss'])->group(function(){
+Route::middleware(['role:admin_boss'])->group(function(){
     Route::get("/proj",[AdminProjectsController::class,'index'])->name("adminProjects.index");
     Route::post("/proj",[AdminProjectsController::class,'store'])->name("adminProjects.store");
     Route::delete("/proj/{id}",[AdminProjectsController::class,'destroy'])->name("adminProjects.destroy");
@@ -48,7 +48,7 @@ Route::middleware(['auth','role:admin_boss'])->group(function(){
 
 Route::get("/contrato",[ContractsController::class,'index'])->name("contracts.index");
 Route::post("/contrato",[ContractsController::class,'store'])->name("contracts.store");
-Route::delete("/contrato/{id}",[ContractsController::class,'destroy'])->name("contracts.destroy");
+Route::delete("/contrato/{id}",[ContractsController::class,'destroy'])->name("contracts.destroy");  
 Route::put("/contrato/{id}",[ContractsController::class,'update'])->name("contracts.update");
 Route::get("/contrato_edit/{id}",[ContractsController::class,'edit'])->name("contracts.edit");
 

@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class Role
 {
@@ -16,12 +17,11 @@ class Role
      */
     public function handle(Request $request, Closure $next, $roles)
     {
-        $newRol = explode('|',$roles);
-        $roleName = strtolower($request->user()->role->label);
+        // dd(Auth::check());
+        if (Auth::check() && Auth::user()->hasAnyRole($roles)) {
+            return $next($request);
+        }
 
-        if(!in_array($roleName,$newRol))
-            return abort(403,__('Unauthorized'));
-        
-        return $next($request);
+        return abort(403,__('Unauthorized'));
     }
 }

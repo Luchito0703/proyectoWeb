@@ -3,14 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\adminProject;
 
 class AdminProjectsController extends Controller
 {
     public function index()
     {
+        $user = Auth::user();
         $adminProjects = adminProject::all();
-        return view('adminProject.gestion_adminProjects',compact("adminProjects"));
+        return view('adminProject.gestion_adminProjects',compact("adminProjects",'user'));
     }
 
     public function store(Request $request)

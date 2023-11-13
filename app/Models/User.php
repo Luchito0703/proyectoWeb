@@ -7,14 +7,21 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, HasRoles;
+    /**
+     * Comprobar si el usuario tiene un rol específico.
+     *
+     * @param string $roleName
+     * @return bool
+     */
 
-    public function role()
+    public function hasRole($roleName)
     {
-        return $this->belongsTo(Role::class);
+        return $this->roles()->where('name', $roleName)->exists();
     }
 
     /**
