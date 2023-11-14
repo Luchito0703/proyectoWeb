@@ -8,6 +8,7 @@
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="/css/p.css">
+    <script src="/js/validates/customerValidate"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 <body>
@@ -101,7 +102,7 @@
                             <input class="form-control text-center"  type="email" id="email_customer" name="email_customer" placeholder="Email de la empresa">
                         </div>
 
-                        <button type="submit" class="btn btn-success mt-4">Enviar</button>
+                        <button type="submit" class="btn btn-success mt-4" onclick="validateCustomerForm()">Enviar</button>
                     </form>
                 </div>
 

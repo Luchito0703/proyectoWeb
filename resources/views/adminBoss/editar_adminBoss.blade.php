@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="/js/tu_archivo.js"></script>
+    <script src="/js/validates/adminBossValidate"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <title>administrador jefe</title>
 </head>
@@ -122,7 +122,7 @@
                                 <input type="email" class="form-control text-center" id="email" name="email" value="{{ $adminBoss->email }}">
                             </div>
 
-                            <button type="submit" class="btn btn-primary mt-4">Actualizar</button>
+                            <button type="submit" class="btn btn-primary mt-4" onclick="validateAdminForm()">Actualizar</button>
                         </form>
                     </div>
                 </div>
