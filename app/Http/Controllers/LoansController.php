@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\contractor;
 use App\Models\loan;
@@ -11,10 +12,11 @@ class LoansController extends Controller
 {    
     public function index()
     {
-        $contractors = contractor::all();
+        $user = Auth::user();
         $loans = loan::all();
+        $contractors = contractor::all();
         $equipments = equipment::all();
-        return view('loan.gestion_loan',compact('loans','contractors','equipments'));
+        return view('loan.gestion_loan',compact('loans','contractors','equipments','user'));
     }
 
    
@@ -39,10 +41,11 @@ class LoansController extends Controller
 
     public function edit($id)
     {
+        $user = Auth::user();
         $loan = loan::find($id);
         $contractors = contractor::all();
         $equipments = equipment::all();
-        return view('loan.editar_loan',compact('loan','contractors','equipments'));
+        return view('loan.editar_loan',compact('loan','contractors','equipments','user'));
     }
 
    
