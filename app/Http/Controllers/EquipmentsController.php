@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\equipment;
 
+use Illuminate\Support\Facades\Auth;
+use App\Models\equipment;
 use Illuminate\Http\Request;
 
 class EquipmentsController extends Controller
@@ -10,8 +11,9 @@ class EquipmentsController extends Controller
     
     public function index()
     {
+        $user = Auth::user();
         $equipments = equipment::all();
-        return view('equipment.gestion_equipments',compact("equipments"));
+        return view('equipment.gestion_equipments',compact("equipments",'user'));
     }
 
     public function store(Request $request)
@@ -46,8 +48,9 @@ class EquipmentsController extends Controller
 
     public function edit($id)
     {
+        $user = Auth::user();
         $equipments = equipment::find($id);
-        return view('equipment.editar_equipments',compact("equipments"));
+        return view('equipment.editar_equipments',compact("equipments",'user'));
     }
 
    

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\contractor;
 
@@ -10,8 +11,9 @@ class ContractorsController extends Controller
 
     public function index()
     {
+        $user = Auth::user();
         $contractors = contractor::all();
-        return view('contractor.gestion_contractor',compact('contractors'));
+        return view('contractor.gestion_contractor',compact('contractors','user'));
     }
 
   
@@ -37,8 +39,9 @@ class ContractorsController extends Controller
 
     public function edit($id)
     {
+        $user = Auth::user();
         $contractors = contractor::find($id);
-        return view('contractor.editar_contractor', compact('contractors'));
+        return view('contractor.editar_contractor', compact('contractors','user'));
     }
 
   

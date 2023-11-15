@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\adminBoss;
 
@@ -9,8 +10,9 @@ class AdminBossController extends Controller
 {
     public function index()
     {
+        $user = Auth::user();
         $adminBosses = adminBoss::all();
-        return view('adminBoss.gestion_adminBoss',compact('adminBosses'));
+        return view('adminBoss.gestion_adminBoss',compact('adminBosses','user'));
     }
 
     public function store(Request $request)
@@ -56,8 +58,9 @@ class AdminBossController extends Controller
 
     public function edit($id)
     {
+        $user = Auth::user();
         $adminBoss = adminBoss::find($id);
-        return view('adminBoss.editar_adminBoss',compact('adminBoss'));
+        return view('adminBoss.editar_adminBoss',compact('adminBoss','user'));
     }
 
     public function update(Request $request, $id)

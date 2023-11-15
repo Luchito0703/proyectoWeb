@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\adminProject;
 
@@ -9,8 +10,9 @@ class AdminProjectsController extends Controller
 {
     public function index()
     {
+        $user = Auth::user();
         $adminProjects = adminProject::all();
-        return view('adminProject.gestion_adminProjects',compact("adminProjects"));
+        return view('adminProject.gestion_adminProjects',compact("adminProjects",'user'));
     }
 
     public function store(Request $request)
@@ -56,7 +58,8 @@ class AdminProjectsController extends Controller
     public function edit($id)
     {
         $adminProject = adminProject::find($id);
-        return view('adminProject.editar_adminProject',compact('adminProject'));
+        $user = Auth::user();
+        return view('adminProject.editar_adminProject',compact('adminProject','user'));
     }
 
     public function update(Request $request, $id)

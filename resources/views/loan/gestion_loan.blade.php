@@ -8,6 +8,7 @@
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="/css/admins.css">
+    <script src="/js/validates/loanValidate"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 <body>
@@ -19,14 +20,18 @@
             <div class="dropdown">
                 <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="usuarioMenu" data-bs-toggle="dropdown" aria-expanded="false">
                     <img src="https://www.softzone.es/app/uploads/2018/04/guest.png?x=480&quality=40" alt="perfil de usuario" width="30" height="30" class="rounded-circle">
-                    <span class="d-none d-sm-inline mx-1">Nombre usuario</span>
+                    <span class="d-none d-sm-inline mx-1">{{ $user->name}}</span>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
                     <li><a class="dropdown-item" href="#">Mensajes</a></li>
                     <li>
                         <hr class="dropdown-divider">
                     </li>
-                    <li><a class="dropdown-item" href="#">Sign out</a></li>
+                    <li>
+                        <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            Cerrar sesión
+                        </a>
+                    </li>
                 </ul>
             </div>
     </header>
@@ -64,52 +69,50 @@
             </div>
             <div class="col">
                 <div class="container pt-3 container text-center">
+                    <div >
+                        <h1>Solicitudes de equipo:</h1>
+                        @if ($errors->any())
+                            @foreach ($errors->all() as $error)
+                                <div class="alert alert-danger" role="alert">{{$error}}</div>
+                            @endforeach
+                        @endif
+                        <form action="{{ route('loans.store') }}" method="POST">
+                            @csrf
+                            <label for="prestamo">Identificador del préstamo</label>
+                            <input type="number" class="form-control text-center" id="prestamo" name="id_prest" placeholder="Identificador del prestamo">
+                            <div class="form-group">
+                                <label for="contratista" class="mt-2">Identificación del contratista</label>
+                                <select name="id_contractor" class="form-control text-center" id="contratista" required> 
+                                    <option value="0">Seleccione el contratista</option>
+                                        @foreach ($contractors as $contra)
+                                            <option value="{{$contra->id}}">{{$contra->name_contractor}}</option>
+                                        @endforeach
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="equipo" class="mt-2">Seleccione el equipo</label>
+                                <select name="id_equipment" class="form-control text-center" id="equipo" required>
+                                    <option value="0">Seleccione el equipo necesario</option>
+                                    @foreach ($equipments as $equipment)
+                                        <option value="{{$equipment->id}}">{{$equipment->name_equipment}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
 
-                    <div class="container text-center">
-     
-            <h1 class="text-center">Solicitudes de equipo:</h1>
-            @if ($errors->any())
-	            @foreach ($errors->all() as $error)
-		            <div class="alert alert-danger" role="alert">{{$error}}</div>
-	            @endforeach
-            @endif
-            <form action="{{ route('loans.store') }}" method="POST">
-                @csrf
-                <label for="prestamo">Identificador del préstamo</label>
-                <input type="number" class="form-control text-center" id="prestamo" name="id_prest" placeholder="Identificador del prestamo">
+                            <div class="form-group">
+                                <label for="prestacion" class="mt-2">Fecha de préstamo</label>
+                                <input type="date" class="form-control text-center" name="date_loan" id="prestacion">
+                            </div>
 
-                        <div class="form-group">
-                            <label for="contratista" class="mt-2">Identificación del contratista</label>
-                            <select name="id_contractor" class="form-control text-center" id="contratista" required> 
-                                <option value="0">Seleccione el contratista</option>
-                                @foreach ($contractors as $contra)
-                                    <option value="{{$contra->id}}">{{$contra->name_contractor}}</option>
-                                @endforeach
-                            </select>
-                        </div>
+                            <div class="form-group">
+                                <label for="devolucion" class="mt-2">Fecha de devolución</label>
+                                <input type="date" class="form-control text-center" name="date_devolution" id="devolucion">
+                            </div>
 
-                        <div class="form-group">
-                            <label for="equipo" class="mt-2">Seleccione el equipo</label>
-                            <select name="id_equipment" class="form-control text-center" id="equipo" required>
-                                <option value="0">Seleccione el equipo necesario</option>
-                                @foreach ($equipments as $equipment)
-                                    <option value="{{$equipment->id}}">{{$equipment->name_equipment}}</option>
-                                @endforeach
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="prestacion" class="mt-2">Fecha de préstamo</label>
-                            <input type="date" class="form-control text-center" name="date_loan" id="prestacion">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="devolucion" class="mt-2">Fecha de devolución</label>
-                            <input type="date" class="form-control text-center" name="date_devolution" id="devolucion">
-                        </div>
-
-                        <button type="submit" class="btn btn-success mt-3">Enviar solicitud</button>
-                    </form>
+                            <button type="submit" class="btn btn-success mt-3" onclick="validateLoanForm()">Enviar solicitud</button>
+                        </form>
+                    </div>
                 </div>
                 <div class="container pt-5 text-center">
                     <table class="table table-striped">

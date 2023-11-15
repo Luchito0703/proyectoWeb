@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\contract;
 use App\Models\customer;
@@ -13,11 +14,12 @@ class ContractsController extends Controller
 
     public function index()
     {
+        $user = Auth::user();
         $contracts = contract::all();
         $contractors = contractor::all();
         $adminProjects = adminProject::all();
         $customers = customer::all();
-        return view('contrato.gestion_contract',compact('contracts','contractors','adminProjects','customers'));
+        return view('contrato.gestion_contract',compact('contracts','contractors','adminProjects','customers','user'));
     }
 
     public function create()
@@ -46,6 +48,7 @@ class ContractsController extends Controller
    
     public function edit($id)
     {
+        $user = Auth::user();
         $contract=Contract::find($id);
         $relatedProject = $contract->adminProject;
         $relatedContractor = $contract->contractor;
@@ -53,7 +56,7 @@ class ContractsController extends Controller
         $contractors=Contractor::all();
         $customers=Customer::all();
         $adminProjects=adminProject::all();
-        return view('contrato.editar_contract',compact('contract','contractors','adminProjects','customers','relatedProject','relatedContractor','relatedCustomer'));
+        return view('contrato.editar_contract',compact('contract','contractors','adminProjects','customers','relatedProject','relatedContractor','relatedCustomer','user'));
         // $contract=Contract::find($id);
         // $contractors=Contractor::all();
         // $customers=Customer::all();

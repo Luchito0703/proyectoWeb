@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\certificate;
 use App\Models\contractor;
@@ -13,11 +14,12 @@ class CertificatesController extends Controller
 
     public function index()
     {
+        $user = Auth::user();
         $certificates = certificate::all();
         $contractors=contractor::all();
         $contracts=contract::all();
         $customers=customer::all();
-        return view('certificado.gestion_certificate',compact('certificates','contractors','contracts','customers'));
+        return view('certificado.gestion_certificate',compact('certificates','contractors','contracts','customers','user'));
     }
 
     public function store(Request $request)
@@ -67,8 +69,9 @@ class CertificatesController extends Controller
 
     public function edit($id)
     {
+        $user = Auth::user();
         $certificate = certificate::find($id);
-        return view('certificado.editar_certificate', compact('certificate'));
+        return view('certificado.editar_certificate', compact('certificate','user'));
     }
 
     public function update(Request $request, $id)
