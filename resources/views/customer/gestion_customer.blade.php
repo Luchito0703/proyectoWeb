@@ -110,7 +110,7 @@
                     <table class="table table-striped">
                         <thead>
                             <tr>
-                                <th scope="col">Nit del Cliente</th>
+                                <th scope="col">Nit de la Empresa</th>
                                 <th scope="col">Cédula del Cliente</th>
                                 <th scope="col">Nombre del Cliente</th>
                                 <th scope="col">Número del Cliente</th>
@@ -168,5 +168,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
+    <script src="/js/graphic_contract.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
 </body>
 </html>

@@ -24,6 +24,10 @@ class User extends Authenticatable
         return $this->roles()->where('name', $roleName)->exists();
     }
 
+    public function role(){
+        return $this->belongsTo(Role::class);
+    }
+    
     /**
      * The attributes that are mass assignable.
      *

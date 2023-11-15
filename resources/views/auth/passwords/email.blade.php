@@ -7,6 +7,7 @@
             <div class="card">
                 <div class="card-header">{{ __('Restablecer contraseña') }}</div>
 
+
                 <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
@@ -23,6 +24,7 @@
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" placeholder="nombre@email.com" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
+
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -34,7 +36,9 @@
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
+
                                     {{ __('Enviar link de restablecimiento') }}
+
                                 </button>
                             </div>
                         </div>

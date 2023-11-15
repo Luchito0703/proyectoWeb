@@ -89,7 +89,7 @@
                                         @endforeach
                                 </select>
                             </div>
-
+                            
                             <div class="form-group">
                                 <label for="equipo" class="mt-2">Seleccione el equipo</label>
                                 <select name="id_equipment" class="form-control text-center" id="equipo" required>

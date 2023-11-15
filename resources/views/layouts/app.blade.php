@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="/css/admins.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
+
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -60,7 +61,6 @@
                 @endguest
             </ul>
         </header>
-
         <main class="py-4">
             @yield('content')
         </main>
@@ -84,5 +84,6 @@
             </div>
         </div>
     </footer>
+
 </body>
 </html>
